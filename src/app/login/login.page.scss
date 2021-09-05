@@ -1,0 +1,38 @@
+.toolbar{
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+    background-color: linear-gradient(197deg, rgba(100,100,100,1) 0%, rgba(63,63,63,1) 13.5%, rgba(29,29,29,1) 33.33%, rgba(0,0,0,1) 100%) !important;
+  }
+  .container{
+    position: absolute;
+    top:50%;
+  }
+  .inputitem{
+    border: 2px solid rgb(185, 248, 185);
+    border-radius: 10px;
+    margin: 0 6% 4% 6%;
+    width: 100%;
+  }
+  .inputfields{
+    margin-left: 20px;
+  }
+  ion-checkbox{
+    --size: 15px;
+  }
+  ion-button{
+    --box-shadow: 10px;
+    --border-radius: 8px
+  }
+  .loginbtn{
+    height: 170%;
+    margin: 2% 6% 2% 6%;
+  }
+  .subcontrol{
+    margin-left:3%;
+    margin-right:3%;
+  }
+  
+  
+  
+  
+  

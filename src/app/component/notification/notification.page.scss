@@ -1,0 +1,15 @@
+ion-button {
+	ion-badge {
+		position: absolute;
+		top: 0.8rem;
+		right: -0.1rem;
+    // --padding-start:10px;
+
+		& ~ ion-icon {
+			margin-right: 1.2rem;
+		}
+	}
+  position: absolute;
+		top: -0.2rem;
+		right: -0.0rem;
+}

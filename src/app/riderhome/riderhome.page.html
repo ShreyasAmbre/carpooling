@@ -1,0 +1,83 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" class="toolbar"  slots="start" >
+    <ion-buttons slot="start" size="large">
+      <ion-menu-button autoHide="false">
+        <ion-icon src="../../assets/icon/menu.svg" style="color: white;"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" size="large">
+      <!-- <ion-menu-button auto-hide="false"> -->
+        <app-notification></app-notification>
+      <!-- </ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>My Rides</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs >
+
+    <!-- TOP TABS -->
+    <ion-tab-bar color="primary" slot="top">
+      <ion-tab-button tab="upcomingrides">
+        <ion-label style="color: white; font-size: large;"><b>Upcoming Rides</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="historyrides" >
+        <ion-label style="color: white; font-size: large;" ><b>Ride History</b></ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+
+    <!-- BOTTOM TABS -->
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="upcomingrides"  style="border-top: 2px solid #00c22a;">
+        <ion-icon style="color: #00c22a;" name="car"></ion-icon>
+        <ion-label style="color: #00c22a;"><b>My Rides</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="chat" >
+        <ion-icon style="color: #bbbbbb;"  name="chatbubbles"></ion-icon>
+        <ion-label style="color: #bbbbbb;" ><b>Chat</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="scheduleride" >
+        <ion-icon style="color: #bbbbbb" name="navigate"></ion-icon>
+        <ion-label style="color: #bbbbbb"><b>Book Ride</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="more" >
+        <ion-icon style="color: #bbbbbb;"  name="apps"></ion-icon>
+        <ion-label style="color: #bbbbbb; " ><b>More</b></ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+
+  </ion-tabs>
+
+
+
+
+  <!-- <ion-tabs >
+    <ion-tab-bar color="primary" slot="bottom">
+      <ion-tab-button tab="upcomingrides" style="border-right: 1px solid #00ab25;">
+        <ion-icon style="color: white;"  name="people"></ion-icon>
+        <ion-label style="color: white;"><b>My Rides</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="scheduleride  " style="border-left: 1px solid #00ab25;">
+        <ion-icon style="color: white;"  name="people"></ion-icon>
+        <ion-label style="color: white;" ><b>Book Ride</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="chat" style="border-left: 1px solid #00ab25;">
+        <ion-icon style="color: white;"  name="people"></ion-icon>
+        <ion-label style="color: white;" ><b>Chat</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="more" style="border-left: 1px solid #00ab25;">
+        <ion-icon style="color: white;"  name="people"></ion-icon>
+        <ion-label style="color: white; " ><b>More</b></ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> -->
+
+</ion-content>

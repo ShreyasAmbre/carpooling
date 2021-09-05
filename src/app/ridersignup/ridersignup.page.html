@@ -1,0 +1,98 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" class="toolbar"  slots="start" >
+    <ion-buttons slot="start" size="large">
+      <ion-menu-button autoHide="false">
+        <ion-icon src="../../assets/icon/menu.svg" style="color: white;"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-stepper><br><br>
+    <mat-step label="Acc. Details" state="phone">
+      <ion-item class="inputitem">
+        <ion-label position="floating">Full Name*</ion-label>
+        <ion-input type="text"  ngModel name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <ion-label position="floating">Email*</ion-label>
+        <ion-input type="text"  ngModel name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <ion-label position="floating">Contact No.*</ion-label>
+        <ion-input type="text"  ngModel name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <ion-label position="floating">Password*</ion-label>
+        <ion-input type="text"  ngModel name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <ion-label position="floating">Confirm Password*</ion-label>
+        <ion-input type="text"  ngModel name="name" ></ion-input>
+      </ion-item><br>
+
+      <div>
+        <button class="nextbutton" mat-button matStepperNext type="submit">Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Car Details" state="chat">
+
+      <ion-item class="inputitem">
+        <ion-label position="floating">Aadhar No.*</ion-label>
+        <ion-input type="number"  ngModel name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <ion-label position="floating">Car Name*</ion-label>
+        <ion-input type="text"  ngModel name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <ion-label position="floating">No. Plate*</ion-label>
+        <ion-input type="text"  ngModel name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <ion-label position="floating">License No.*</ion-label>
+        <ion-input type="text"  ngModel name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <label class="myFakeUploadButton" for="myFileInput">Upload Aadhar Card*</label>
+        <input type="file" id="myFileInput">
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <label class="myFakeUploadButton" for="myFileInput">Upload Driving License*</label>
+        <input type="file" id="myFileInput">
+      </ion-item>
+
+      <ion-item class="inputitem">
+        <label class="myFakeUploadButton" for="myFileInput">Upload Car Document*</label>
+        <input type="file" id="myFileInput">
+      </ion-item>
+      <br>
+
+      <div>
+        <button class="backbutton" mat-button matStepperPrevious type="submit">Back</button>
+        <button class="nextbutton" mat-button matStepperNext type="submit">Submit</button>
+      </div>
+    </mat-step>
+    
+  
+    <!-- Icon overrides. -->
+    <ng-template matStepperIcon="phone">
+      <mat-icon>call_end</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="chat">
+      <mat-icon>forum</mat-icon>
+    </ng-template>
+  </mat-stepper>
+
+</ion-content>
