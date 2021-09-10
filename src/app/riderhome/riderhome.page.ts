@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {MainserviceService} from '../services/mainservice.service';
+
 
 @Component({
   selector: 'app-riderhome',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./riderhome.page.scss'],
 })
 export class RiderhomePage implements OnInit {
-
-  constructor() { }
+  tab:any;
+  constructor(private router: Router, private service: MainserviceService) { 
+  }
 
   ngOnInit() {
+    
   }
 
 }

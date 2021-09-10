@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {MainserviceService} from '../../services/mainservice.service'
 
 @Component({
   selector: 'app-chat',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private service: MainserviceService) { }
 
   ngOnInit() {
+    console.log(this.router.url)
   }
 
 }

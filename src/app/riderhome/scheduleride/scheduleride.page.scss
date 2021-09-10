@@ -1,0 +1,37 @@
+.padding0px{
+    padding: 0%;
+}
+.inputitem{
+    border: 2px solid rgb(185, 248, 185);
+    border-radius: 10px;
+    margin: 5% 6% 4% 6%;
+}
+.inputfields{
+margin-left: 10px;
+height: 20%; padding: 50px; color: #00c22a;
+}
+
+.mapcontainer{
+    padding: 0%;
+    height: 60%; 
+    margin: 0px; 
+    position: absolute; 
+    top: 0%;
+}
+.formcontainer{
+    background-color: rgb(227, 255, 227); 
+    height: 40%; 
+    margin: 0px; 
+    position: absolute; 
+    bottom: 0%; 
+    // border-top-left-radius: 20px; 
+    // border-top-right-radius: 20px;
+}
+.submitbtn{
+    margin: 8% 7% 0 7%;
+    height: 15%;
+}
+.ripple-parent {
+    position: relative;
+    overflow: hidden;
+  }

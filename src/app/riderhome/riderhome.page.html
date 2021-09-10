@@ -18,8 +18,8 @@
   <ion-tabs >
 
     <!-- TOP TABS -->
-    <ion-tab-bar color="primary" slot="top">
-      <ion-tab-button tab="upcomingrides">
+    <ion-tab-bar *ngIf="router.url == '/riderhome/riderhome/upcomingrides' || router.url == '/riderhome/riderhome/historyrides'" color="primary" slot="top">
+      <ion-tab-button tab="upcomingrides" >
         <ion-label style="color: white; font-size: large;"><b>Upcoming Rides</b></ion-label>
       </ion-tab-button>
 
@@ -52,32 +52,5 @@
     </ion-tab-bar>
 
   </ion-tabs>
-
-
-
-
-  <!-- <ion-tabs >
-    <ion-tab-bar color="primary" slot="bottom">
-      <ion-tab-button tab="upcomingrides" style="border-right: 1px solid #00ab25;">
-        <ion-icon style="color: white;"  name="people"></ion-icon>
-        <ion-label style="color: white;"><b>My Rides</b></ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="scheduleride  " style="border-left: 1px solid #00ab25;">
-        <ion-icon style="color: white;"  name="people"></ion-icon>
-        <ion-label style="color: white;" ><b>Book Ride</b></ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="chat" style="border-left: 1px solid #00ab25;">
-        <ion-icon style="color: white;"  name="people"></ion-icon>
-        <ion-label style="color: white;" ><b>Chat</b></ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="more" style="border-left: 1px solid #00ab25;">
-        <ion-icon style="color: white;"  name="people"></ion-icon>
-        <ion-label style="color: white; " ><b>More</b></ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs> -->
 
 </ion-content>

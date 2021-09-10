@@ -4,18 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { RiderhomePage } from './riderhome.page';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: RiderhomePage
-  // },
-  // {
-  //   path: 'upcomingrides',
-  //   loadChildren: () => import('./upcomingrides/upcomingrides.module').then( m => m.UpcomingridesPageModule)
-  // },
-  // {
-  //   path: 'historyrides',
-  //   loadChildren: () => import('./historyrides/historyrides.module').then( m => m.HistoryridesPageModule)
-  // },
 
   {
     path: 'riderhome',
