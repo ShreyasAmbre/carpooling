@@ -10,17 +10,17 @@
     <ion-grid class="padding0px">
       <ion-row class="ion-align-items-end">
         <ion-col class="formcontainer">
-          <ion-item class="inputitem" style="height: 22%;">
-            <ion-label position="floating" style="color: #00c22a; font-size: large;">Source</ion-label>
-            <ion-input type="text" style="height: 20%; padding: 50px; color: #00c22a;" name="source" class="inputfields" ></ion-input>
+          <ion-item class="inputitem" >
+            <!-- <ion-label position="floating" style="color: #00c22a; font-size: large; margin-top: -10px;">Source</ion-label> -->
+            <ion-input type="text" name="source" [(ngModel)]="source"  class="inputfields" placeholder="Source"></ion-input>
           </ion-item>
   
-          <ion-item class="inputitem" style="height: 22%;">
-            <ion-label position="floating" style="color: #00c22a; font-size: large;">Destination</ion-label>
-            <ion-input type="text" style="height: 20%; padding: 50px; color: #00c22a;" name="destination" class="inputfields" ></ion-input>
+          <ion-item class="inputitem" >
+            <!-- <ion-label position="floating" style="color: #00c22a; font-size: large; margin-top: -10px;">Destination</ion-label> -->
+            <ion-input type="text" name="destination" [(ngModel)]="destination" class="inputfields" placeholder="Destination"></ion-input>
           </ion-item>
           
-          <ion-button type="submit" expand="block"  class="submitbtn "><b>Submit</b></ion-button>
+          <ion-button type="submit" expand="block"  class="submitbtn" (click)="scheduleride()"><b>Next</b></ion-button>
 
         </ion-col>
       </ion-row>
