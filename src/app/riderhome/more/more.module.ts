@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { MorePageRoutingModule } from './more-routing.module';
 
 import { MorePage } from './more.page';
+import { ChartModule } from 'angular-highcharts'
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MorePageRoutingModule
+    MorePageRoutingModule,
+    ChartModule
   ],
   declarations: [MorePage]
 })

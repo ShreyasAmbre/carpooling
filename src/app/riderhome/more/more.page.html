@@ -1,9 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>more</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="ion-padding">
+    <ion-card>
+      <ion-card-header> Bar Chart </ion-card-header>
+      <ion-card-content >
+        <canvas id="myChart" width="400" height="400"></canvas>        
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-card>
+      <ion-card-header> Doughnut Chart </ion-card-header>
+      <ion-card-content >
+        <ion-grid>
+            <p>
+              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color: #36A2EB"><ion-label>Success Rides</ion-label></ion-chip>
+              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color: #36eb6c;"><ion-label>Upcoming Rides</ion-label></ion-chip>
+              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color: #FFCE56;"><ion-label>Ratings</ion-label></ion-chip>
+              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color: #d363ff;"><ion-label>Income</ion-label></ion-chip>
+              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color:#FF6384"><ion-label>Calcel Rides</ion-label></ion-chip>
+            </p>
+            
+        </ion-grid>
+        <canvas id="myDonut" width="400" height="400"></canvas>  
+        
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
 
 </ion-content>
