@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pickupus-323903": {
+      "hosting": {
+        "app": [
+          "pickupus-323903"
+        ]
+      }
+    }
+  }
+}

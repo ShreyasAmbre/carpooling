@@ -12,34 +12,36 @@
 <ion-content>
   <mat-stepper><br><br>
     <mat-step label="Acc. Details">
+    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)">
       <ion-item class="inputitem">
         <ion-label position="floating">Full Name*</ion-label>
-        <ion-input type="text"  ngModel name="name" ></ion-input>
+        <ion-input type="text"  ngModel name="fullname" ></ion-input>
       </ion-item>
 
       <ion-item class="inputitem">
         <ion-label position="floating">Email*</ion-label>
-        <ion-input type="text"  ngModel name="name" ></ion-input>
+        <ion-input type="text"  ngModel name="email" ></ion-input>
       </ion-item>
 
       <ion-item class="inputitem">
         <ion-label position="floating">Contact No.*</ion-label>
-        <ion-input type="text"  ngModel name="name" ></ion-input>
+        <ion-input type="text"  ngModel name="contact" ></ion-input>
       </ion-item>
 
       <ion-item class="inputitem">
         <ion-label position="floating">Password*</ion-label>
-        <ion-input type="text"  ngModel name="name" ></ion-input>
+        <ion-input type="text"  ngModel name="password" ></ion-input>
       </ion-item>
 
       <ion-item class="inputitem">
         <ion-label position="floating">Confirm Password*</ion-label>
-        <ion-input type="text"  ngModel name="name" ></ion-input>
+        <ion-input type="text"  ngModel name="confirmpassword" ></ion-input>
       </ion-item><br>
 
       <div>
         <button class="nextbutton" mat-button matStepperNext type="submit">Next</button>
       </div>
+    </form>
     </mat-step>
     <mat-step label="Car Details">
 
