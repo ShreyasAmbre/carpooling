@@ -6,13 +6,13 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: 'ridersignup',
-    loadChildren: () => import('./ridersignup/ridersignup.module').then( m => m.RidersignupPageModule)
-  },
+  // {
+  //   path: 'ridersignup',
+  //   loadChildren: () => import('./ridersignup/ridersignup.module').then( m => m.RidersignupPageModule)
+  // },
   {
     path: '',
-    redirectTo: 'ridersignup',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -31,10 +31,10 @@ const routes: Routes = [
     path: 'riderprofile',
     loadChildren: () => import('./riderprofile/riderprofile.module').then( m => m.RiderprofilePageModule)
   },
-  // {
-  //   path: 'ridersignup',
-  //   loadChildren: () => import('./ridersignup/ridersignup.module').then( m => m.RidersignupPageModule)
-  // },
+  {
+    path: 'ridersignup',
+    loadChildren: () => import('./ridersignup/ridersignup.module').then( m => m.RidersignupPageModule)
+  },
   {
     path: 'riderhome',
     loadChildren: () => import('./riderhome/riderhome.module').then( m => m.RiderhomePageModule)

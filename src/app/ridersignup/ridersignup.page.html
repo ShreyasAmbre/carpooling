@@ -29,13 +29,21 @@
       </ion-item>
 
       <ion-item class="inputitem">
+        <ion-label position="floating">Role*</ion-label>
+        <ion-select name="role" ngModel >
+          <ion-select-option value="driver">Driver</ion-select-option>
+          <ion-select-option value="passanger">Passanger</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="inputitem">
         <ion-label position="floating">Password*</ion-label>
-        <ion-input type="text"  ngModel name="password" ></ion-input>
+        <ion-input type="password"  ngModel name="password" ></ion-input>
       </ion-item>
 
       <ion-item class="inputitem">
         <ion-label position="floating">Confirm Password*</ion-label>
-        <ion-input type="text"  ngModel name="confirmpassword" ></ion-input>
+        <ion-input type="password"  ngModel name="confirmpassword" ></ion-input>
       </ion-item><br>
 
       <div>

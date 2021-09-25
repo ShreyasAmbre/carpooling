@@ -1,0 +1,35 @@
+.containersender {
+  // float: left;
+  height: auto;
+  border: 2px solid #dedede;
+  background-color: #caffca;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 70%;
+  margin: 10px 5px;
+}
+.containerreceiver {
+  float: right;
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 70%;
+  margin: 1% 1%;
+}
+.darker {
+  border-color: #ccc;
+  background-color: rgb(149, 252, 162);
+}
+
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  text-align: left;
+  color: #999;
+  font-size: x-small;
+}

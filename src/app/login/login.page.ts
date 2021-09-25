@@ -4,6 +4,8 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +17,8 @@ export class LoginPage implements OnInit {
   fieldtype = "password"
 
 
-  constructor(private router:Router, public afStore: AngularFirestore, public ngFireAuth: AngularFireAuth, 
-              public alertController: AlertController, public loadingController: LoadingController) { }
+  constructor(private storage: Storage, private router:Router, public afStore: AngularFirestore, public ngFireAuth: AngularFireAuth, 
+              public alertController: AlertController, public loadingController: LoadingController, public afDB:AngularFireDatabase,) { }
 
   async errorAlert(headerMsg, subTitleMsg, errorMsg) {
     const alert = await this.alertController.create({
@@ -46,13 +48,15 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.storage.create();
   }
 
   login(data){
     this.presentLoading()
     // console.log("Login Data", data)
     this.ngFireAuth.signInWithEmailAndPassword(data.email, data.password).then(res => {
-      // console.log("LOGIN RES ===> ", res)
+      // console.log("LOGIN RES ===> ", res.user)
+      this.getUserDetails(res.user)
       this.loadingController.dismiss()
       this.router.navigateByUrl('/riderhome');
 
@@ -61,7 +65,13 @@ export class LoginPage implements OnInit {
       this.loadingController.dismiss()
       this.errorAlert("ERROR", "Login Failed", error)
     })
+  }
 
+  getUserDetails(user){
+    this.afDB.list('users/', ref => ref.orderByChild("id").equalTo(user._delegate.uid)).valueChanges().subscribe(res => {
+      // console.log("USERS DETAILS", res[0])
+      this.storage.set('user', res[0]);
+    })
   }
 
   showpass(){

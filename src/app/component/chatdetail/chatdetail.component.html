@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" class="toolbar"  slots="start" >
+    <ion-title> 
+      <img src="../../../assets/riderprofilepic.png" alt="profilepic" width="35" height="35" style="text-align: left;"> 
+      {{user.fullname}}
+      <img src="../../../assets/icon/close.png" alt="profilepic" (click)="dismiss()" width="20" style="float: right; margin-top: 2%;"> 
+
+    </ion-title>
+  </ion-toolbar>
+</ion-header> 
+  
+<ion-content>
+    <!-- <div > -->
+      <ng-container *ngFor="let chat of chats">
+        <div *ngIf="chat?.role === 'driver'" class="containersender">
+          <p style="text-align: left; margin: 0%; padding: 0%;">{{chat.content}}</p>
+          <span class="time-left">11:01 | {{chat.date}}</span>
+        </div>
+        <div *ngIf="chat?.role === 'passanger'">
+          <div class="containerreceiver darker">
+            <p style="text-align: right;">{{chat.content}}</p>
+            <span class="time-left">11:01 | {{chat.date}}</span>
+          </div><br><br>
+        </div>
+      </ng-container>
+      
+    <!-- </div> -->
+    
+</ion-content>
+
+<ion-footer>
+  <ion-item>
+   <ion-input type="text" placeholder="Type here..." [(ngModel)]="newmessage"></ion-input>
+   <ion-button clear item-right (click)="sendmessage()">Send</ion-button>
+  </ion-item>
+ </ion-footer>
