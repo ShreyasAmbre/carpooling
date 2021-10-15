@@ -10,7 +10,7 @@
 <ion-content>
   <ion-list>
     <ion-item-sliding *ngFor="let user of chatPassanger">
-      <ion-item-options side="start">
+      <ion-item-options side="start" (click)="callNow('8087024368')">
         <ion-item-option expandable style="background-color: cornflowerblue;">
           Call
         </ion-item-option>

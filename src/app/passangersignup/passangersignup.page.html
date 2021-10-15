@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" class="toolbar"  slots="start" >
+    <ion-title>Passanger Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="margin: 7%;">
+    <form #passangerSignupForm="ngForm" (ngSubmit)="passangerSignup(passangerSignupForm.value)">
+      <ion-item class="inputitem">
+        <ion-label position="floating">Full Name*</ion-label>
+        <ion-input type="text"  ngModel name="fullname" ></ion-input>
+      </ion-item>
+  
+      <ion-item class="inputitem">
+        <ion-label position="floating">Email*</ion-label>
+        <ion-input type="text"  ngModel name="email" ></ion-input>
+      </ion-item>
+  
+      <ion-item class="inputitem">
+        <ion-label position="floating">Contact No.*</ion-label>
+        <ion-input type="text"  ngModel name="contact" ></ion-input>
+      </ion-item>
+  
+      <ion-item class="inputitem">
+        <ion-label position="floating">Role*</ion-label>
+        <ion-select name="role" ngModel >
+          <ion-select-option value="passanger">Passanger</ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item class="inputitem">
+        <ion-label position="floating">Password*</ion-label>
+        <ion-input type="password"  ngModel name="password" ></ion-input>
+      </ion-item>
+  
+      <ion-item class="inputitem">
+        <ion-label position="floating">Confirm Password*</ion-label>
+        <ion-input type="password"  ngModel name="confirmpassword" ></ion-input>
+      </ion-item><br>
+  
+      <ion-button type="submit" expand="block"><b>Sign Up</b></ion-button>
+    </form>
+  </div>
+  
+
+</ion-content>

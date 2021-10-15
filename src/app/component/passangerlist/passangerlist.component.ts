@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ModalController } from '@ionic/angular';
 import { ChatdetailComponent } from '../chatdetail/chatdetail.component';
 import { Storage } from '@ionic/storage-angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class PassangerlistComponent implements OnInit {
   chatPassanger:any;
   userData:any;
   
-  constructor(private storage: Storage,public afDB:AngularFireDatabase, public modalController: ModalController,) { }
+  constructor(private callNumber: CallNumber, private storage: Storage,public afDB:AngularFireDatabase, public modalController: ModalController,) { }
 
   async chatDetailModal(user) {
     const modal = await this.modalController.create({
@@ -42,18 +43,27 @@ export class PassangerlistComponent implements OnInit {
   getAllUsers(userData){
     if(userData["role"] == "driver"){
       this.afDB.list('users/', ref => ref.orderByChild("role").equalTo("passanger")).valueChanges().subscribe(res => {
-        // console.log("USERS WITH ROLE PASSANGER", res)
+        console.log("USERS WITH ROLE PASSANGER", res)
         this.chatPassanger = res
       })
     }else if(userData["role"] == "passanger"){
       this.afDB.list('users/', ref => ref.orderByChild("role").equalTo("driver")).valueChanges().subscribe(res => {
-        // console.log("USERS WITH ROLE PASSANGER", res)
+        console.log("USERS WITH ROLE PASSANGER", res)
         this.chatPassanger = res
       })
     }
     
   }
 
+  
+  callNow(number){
+    this.callNumber.callNumber(number, true).then(res => {
+      console.log('Launched dialer!', res)
+    })
+    .catch(err =>{
+      console.log('Error launching dialer', err)
+    });
+  }
 
   openChat(user){
     // console.log("OPEN CHAT USER", user)

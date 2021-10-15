@@ -10,7 +10,7 @@
         <app-notification></app-notification>
       </ion-menu-button>
     </ion-buttons> -->
-    <ion-title>My Rides</ion-title>
+    <ion-title>UpComing Rides</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,34 +18,34 @@
   <ion-tabs >
 
     <!-- TOP TABS -->
-    <ion-tab-bar *ngIf="router.url == '/riderhome/riderhome/upcomingrides' || router.url == '/riderhome/riderhome/historyrides'" color="primary" slot="top">
-      <ion-tab-button tab="upcomingrides" >
-        <ion-label style="color: white; font-size: large;"><b>My Rides</b></ion-label>
+    <ion-tab-bar *ngIf="router.url == '/passangerhome/passangerhome/passangerupcomingrides' || router.url == '/passangerhome/passangerhome/passangerhistoryrides'" color="primary" slot="top">
+      <ion-tab-button tab="passangerupcomingrides" >
+        <ion-label style="color: white; font-size: large;"><b>Upcoming Rides</b></ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="historyrides" >
-        <ion-label style="color: white; font-size: large;" ><b>Ride History</b></ion-label>
+      <ion-tab-button tab="passangerhistoryrides" >
+        <ion-label style="color: white; font-size: large;" ><b>Booked Rides</b></ion-label>
       </ion-tab-button>
     </ion-tab-bar>
 
     <!-- BOTTOM TABS -->
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="upcomingrides">
+      <ion-tab-button tab="passangerupcomingrides">
         <ion-icon name="car"></ion-icon>
         <ion-label ><b>My Rides</b></ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="chat" >
+      <ion-tab-button tab="passangerchat" >
         <ion-icon   name="chatbubbles"></ion-icon>
         <ion-label ><b>Chat</b></ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="scheduleride" >
+      <ion-tab-button tab="passangerscheduleride" >
         <ion-icon name="navigate"></ion-icon>
         <ion-label><b>Book Ride</b></ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="more" >
+      <ion-tab-button tab="passangermore" >
         <ion-icon name="apps"></ion-icon>
         <ion-label ><b>More</b></ion-label>
       </ion-tab-button>

@@ -1,0 +1,19 @@
+.toolbar{
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+  }
+
+.inputitem{
+  border: 2px solid rgb(185, 248, 185);
+  border-radius: 10px;
+  margin: 0 4% 4% 0;
+  width: 100%;
+}
+ion-button{
+  --box-shadow: 10px;
+  --border-radius: 8px
+}
+.loginbtn{
+    height: 170%;
+    margin: 2% 6% 2% 6%;
+  }

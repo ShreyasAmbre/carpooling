@@ -43,6 +43,27 @@ const routes: Routes = [
     path: 'notification',
     loadChildren: () => import('./component/notification/notification.module').then( m => m.NotificationPageModule)
   },
+  {
+    path: 'signuprole',
+    loadChildren: () => import('./signuprole/signuprole.module').then( m => m.SignuprolePageModule)
+  },
+  {
+    path: 'passangersignup',
+    loadChildren: () => import('./passangersignup/passangersignup.module').then( m => m.PassangersignupPageModule)
+  },
+  {
+    path: 'passangerhome',
+    loadChildren: () => import('./passangerhome/passangerhome.module').then( m => m.PassangerhomePageModule)
+  },
+  {
+    path: 'passangerprofile',
+    loadChildren: () => import('./passangerprofile/passangerprofile.module').then( m => m.PassangerprofilePageModule)
+  },
+  // {
+  //   path: 'passangernavs',
+  //   loadChildren: () => import('./component/passangernavs/passangernavs.module').then( m => m.PassangernavsPageModule)
+  // },
+
   
 ];
 

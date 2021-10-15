@@ -19,6 +19,9 @@ import { PassangerlistComponent} from './component/passangerlist/passangerlist.c
 import { FormsModule } from '@angular/forms';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
+import { PassangernavsPageModule } from './component/passangernavs/passangernavs.module'
 
 
 var firebaseConfig = {
@@ -36,9 +39,9 @@ var firebaseConfig = {
 @NgModule({
   declarations: [AppComponent, ChatdetailComponent, PassangerlistComponent],
   entryComponents: [],
-  imports: [IonicStorageModule.forRoot(), FormsModule, AngularFirestoreModule, AngularFireDatabaseModule, AngularFireAuthModule, AngularFireModule.initializeApp(firebaseConfig), 
+  imports: [PassangernavsPageModule, IonicStorageModule.forRoot(), FormsModule, AngularFirestoreModule, AngularFireDatabaseModule, AngularFireAuthModule, AngularFireModule.initializeApp(firebaseConfig), 
             BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [CallNumber, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

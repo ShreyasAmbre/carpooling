@@ -1,0 +1,88 @@
+<ion-menu side="start" menuId="first" contentId="content1">
+  <ion-header>
+    <ion-toolbar>
+      <div class="menu-header-bg"></div>
+      <div class="header-content">
+        <img src="../../../assets/icon/avatar2.jpg" alt="">
+        <ion-label>
+          <h1><b>Shreyas Ambre</b></h1>
+          <p>CAR PULLER</p>
+        </ion-label>
+      </div>
+      <div class="action-button">
+
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list class="menu-items" *ngFor="let pages of navigate">
+      <ion-menu-toggle auto-hide="true" *ngIf="!pages.children">
+        <!-- <ion-item [routerLink]="pages.url">
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            <ion-label><b>{{pages.title}}</b></ion-label>
+        </ion-item> -->
+
+        <div *ngIf="pages.url === '/'; else loggedIn">
+          <ion-item (click)="logout()">
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            <ion-label><b>{{pages.title}}</b></ion-label>
+          </ion-item>
+        </div>
+        <ng-template #loggedIn>
+          <ion-item [routerLink]="pages.url">
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            <ion-label><b>{{pages.title}}</b></ion-label>
+          </ion-item>
+        </ng-template>
+
+      </ion-menu-toggle>
+
+      <!-- Below code is all about sub menus -->
+      <ion-item button *ngIf="pages.children?.length > 0" (click)="pages.open = !pages.open"
+        [class.active-parent]="pages.open" detail="true">
+        <ion-icon slot="start" name="arrow-forward" *ngIf="!pages.open"></ion-icon>
+        <ion-icon slot="start" name="arrow-down" *ngIf="pages.open"></ion-icon>
+        <ion-label><b>{{pages.title}}</b></ion-label>
+      </ion-item>
+
+      <ion-list class="menu-items" *ngIf="pages.open">
+        <div *ngFor="let sub of pages.children">
+
+          <div *ngIf="sub.child?.length > 0; else elseBlock">
+            <ion-item button  (click)="sub.open = !sub.open"
+              [class.active-parent]="sub.open" detail="true">
+              <ion-icon slot="start" name="arrow-forward" *ngIf="!sub.open"></ion-icon>
+              <ion-icon slot="start" name="arrow-down" *ngIf="sub.open"></ion-icon>
+              <ion-label><b>{{sub.title}}</b></ion-label>
+            </ion-item>
+
+            <ion-list class="menu-items" *ngIf="sub.open">
+              <div *ngFor="let s of sub.child">
+                  <ion-menu-toggle auto-hide="true">
+                    <ion-item  [routerLink]="s.url">
+                        <ion-icon [name]="s.icon" slot="start"></ion-icon>
+                          <b>{{s.title}}</b>
+                    </ion-item>
+                  </ion-menu-toggle>
+              </div>
+
+            </ion-list>
+          </div>
+
+
+          <ng-template #elseBlock>
+            <ion-menu-toggle auto-hide="true">
+              <ion-item  [routerLink]="sub.url">
+                  <ion-icon [name]="sub.icon" slot="start"></ion-icon>
+                    <b>{{sub.title}}</b>
+              </ion-item>
+            </ion-menu-toggle>
+          </ng-template>
+        </div>
+
+      </ion-list>
+    </ion-list>
+
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="content1"></ion-router-outlet>

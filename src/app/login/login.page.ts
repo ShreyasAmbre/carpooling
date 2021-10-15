@@ -58,7 +58,7 @@ export class LoginPage implements OnInit {
       // console.log("LOGIN RES ===> ", res.user)
       this.getUserDetails(res.user)
       this.loadingController.dismiss()
-      this.router.navigateByUrl('/riderhome');
+      
 
     }).catch(error => {
       // console.log("LOGIN ERROR", error)
@@ -71,6 +71,13 @@ export class LoginPage implements OnInit {
     this.afDB.list('users/', ref => ref.orderByChild("id").equalTo(user._delegate.uid)).valueChanges().subscribe(res => {
       // console.log("USERS DETAILS", res[0])
       this.storage.set('user', res[0]);
+
+      if(res[0]["role"] === "driver")
+      this.router.navigateByUrl('/riderhome');
+
+      if(res[0]["role"] === "passanger")
+      this.router.navigateByUrl('/passangerhome');
+
     })
   }
 
