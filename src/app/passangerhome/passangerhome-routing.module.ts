@@ -26,9 +26,13 @@ const routes: Routes = [
         loadChildren: () => import('./passangermore/passangermore.module').then( m => m.PassangermorePageModule)
       },
       {
-        path: 'passangerscheduleride',
-        loadChildren: () => import('./passangerscheduleride/passangerscheduleride.module').then( m => m.PassangerscheduleridePageModule)
-      }
+        path: 'passangerprofile',
+        loadChildren: () => import('../passangerprofile/passangerprofile.module').then( m => m.PassangerprofilePageModule)
+      },
+      // {
+      //   path: 'passangerscheduleride',
+      //   loadChildren: () => import('./passangerscheduleride/passangerscheduleride.module').then( m => m.PassangerscheduleridePageModule)
+      // }
     ]
   },
   {

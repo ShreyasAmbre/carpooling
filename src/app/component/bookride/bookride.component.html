@@ -1,0 +1,100 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" class="toolbar"  slots="start" >
+    <ion-title> 
+      Book Ride
+      <img src="../../../assets/icon/close.png" alt="profilepic" (click)="dismiss()" width="20" style="float: right; margin-top: 2%;"> 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid class="padding0px">
+    <ion-row class="ion-align-items-end">
+      <ion-col class="padding0px" class="mapcontainer">
+        <img src="../../../assets/img/googlemaproute.PNG" alt="map" style="width: 100%; height: 100%; object-fit: fill;">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    
+    <ion-grid class="padding0px">
+      <ion-row class="ion-align-items-end">
+        <ion-col class="formcontainer">
+            <ion-row style="height: auto; ">
+              <div class="row" style="height: 130px; ">
+                <div class="col-3" style="height: 70px; margin-top: 5%; padding-right: 0px; padding-right: 0px;">
+                  <!-- <div style=" border-radius: 10px; font-size: 35px; color: white; float: right; padding-top: 4%;  width: 70px; height: 60px; background-color: #e6ffe6; vertical-align: middle; display: table-cell; text-align: center;"> -->
+                    <img src="../../../assets/icon/avatar2.jpg" alt="avatar">
+                  <!-- </div> -->
+                </div>
+                <div class="col-5" style="height: auto; padding-right: 0px; margin-right: 0px;">
+                  <div class="row" style="margin-top: 15%; margin-bottom: 0px; padding-bottom: 0px; ">
+                    <div class="col-12" style="padding-right: 0px; margin-right: 0px;"><br>
+                      <p style="padding-bottom: 0px; margin-bottom: 10px; margin-top: -5px; font-size: 14px;"><b>Shreyas Ambre </b></p>
+                      <p style="padding-bottom: 0px; margin-bottom: 0px;  font-size: 14px; letter-spacing: 0.5px;"><b>+91 8149421528</b></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3" style="height: auto; ">
+                  <div class="row">
+                    <p style="color: rgb(134, 129, 123);"><br>
+                      <ion-chip color="primary" (click)="openChat()">
+                        <ion-label >Call</ion-label>
+                      </ion-chip>
+                      <ion-chip color="secondary">
+                        <ion-label (click)="openChat()">Message</ion-label>
+                      </ion-chip>
+                    </p>
+                  </div>
+                </div>
+               
+              </div>
+            </ion-row> 
+
+            <ion-row style="height: auto; ">
+              <div class="row" style="height: 130px; ">
+                <div class="col-3" style="height: 70px; margin-top: 5%; padding-right: 0px; padding-right: 0px;">
+                  <div style=" border-radius: 10px; font-size: 35px; color: white; float: right; padding-top: 4%;  width: 70px; height: 60px; background-color: #e6ffe6; vertical-align: middle; display: table-cell; text-align: center;">
+                    <img src="../../../assets/icon/carlist.png" alt="car" width="50" height="50">
+                  </div>
+                </div>
+                <div class="col-6" style="height: auto; padding-right: 0px; margin-right: 0px;">
+                  <div class="row" style="margin-top: 15%; margin-bottom: 0px; padding-bottom: 0px;">
+                    <div class="col-1">
+                      <div style="width: 10px; height: 8px; background-color: #00c22a; border-radius: 50px; "></div>
+                      <div style="width: 10px; height: 15px; border-left: 3px solid rgb(162, 167, 162); margin-left: 3px;"></div>
+                      <div style="width: 10px; height: 8px; background-color: rgb(255, 204, 0); border-radius: 50px;"></div>
+                    </div>
+                    <div class="col-9" style="padding-right: 0px; margin-right: 0px;">
+                      <p style="padding-bottom: 0px; margin-bottom: 0px; margin-top: -5px; font-size: 14px;"><b>Washinton Square </b></p>
+                      <p style="padding-bottom: 0px; margin-bottom: 0px;  font-size: 14px; letter-spacing: 0.5px;"><b>Harison, Newark</b></p>
+                    </div>
+                    <div class="row" style="margin-bottom: 0px; padding-bottom: 0px !important;">
+                      <div class="col-12">
+                        <p style="font-size: 14px; margin-top: 3%; margin-bottom: 0px"><b>25 Feb 2021 12:10pm</b></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3" style="height: auto; ">
+                  <div class="row" style="margin-top: 30%">
+                    <h1 style="color: rgb(230, 195, 0);">$ 20</h1>
+                    <p style="color: rgb(134, 129, 123);">2 Seats</p>
+                  </div>
+                </div>
+                <div class="row" style="height: 30px; padding: 0px; margin-left: 15%;">
+                  <div class="col-12">
+                    <p style="font-size: 14px; margin-top: 3%; padding-top: 0px; margin-top: 0px; margin-left: 7%; color: rgb(134, 129, 123); color: #00c22a;;"><b>Honda Civic | MH 48 E 0789</b></p>
+                  </div>
+                </div>
+              </div>
+            </ion-row>   
+                
+          
+          <ion-button type="submit" expand="block"  class="submitbtn"><b>Book Ride</b></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+
+</ion-content>

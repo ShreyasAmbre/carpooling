@@ -33,7 +33,7 @@ export class PassangerlistComponent implements OnInit {
     this.storage.create();
     this.storage.get("user").then(res => {
       this.userData = res
-      console.log("DRIVER DATA FROM SESSION STORAGE ===>", res)
+      // console.log("DRIVER DATA FROM SESSION STORAGE ===>", res)
       this.getAllUsers(this.userData)
 
     })
@@ -43,16 +43,15 @@ export class PassangerlistComponent implements OnInit {
   getAllUsers(userData){
     if(userData["role"] == "driver"){
       this.afDB.list('users/', ref => ref.orderByChild("role").equalTo("passanger")).valueChanges().subscribe(res => {
-        console.log("USERS WITH ROLE PASSANGER", res)
+        // console.log("USERS WITH ROLE PASSANGER", res)
         this.chatPassanger = res
       })
     }else if(userData["role"] == "passanger"){
       this.afDB.list('users/', ref => ref.orderByChild("role").equalTo("driver")).valueChanges().subscribe(res => {
-        console.log("USERS WITH ROLE PASSANGER", res)
+        // console.log("USERS WITH ROLE PASSANGER", res)
         this.chatPassanger = res
       })
     }
-    
   }
 
   

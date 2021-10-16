@@ -55,15 +55,10 @@ const routes: Routes = [
     path: 'passangerhome',
     loadChildren: () => import('./passangerhome/passangerhome.module').then( m => m.PassangerhomePageModule)
   },
-  {
-    path: 'passangerprofile',
-    loadChildren: () => import('./passangerprofile/passangerprofile.module').then( m => m.PassangerprofilePageModule)
-  },
   // {
-  //   path: 'passangernavs',
-  //   loadChildren: () => import('./component/passangernavs/passangernavs.module').then( m => m.PassangernavsPageModule)
+  //   path: 'passangerprofile',
+  //   loadChildren: () => import('./passangerprofile/passangerprofile.module').then( m => m.PassangerprofilePageModule)
   // },
-
   
 ];
 

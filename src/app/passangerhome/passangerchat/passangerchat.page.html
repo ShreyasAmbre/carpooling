@@ -1,9 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>passangerchat</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
+  <ion-list>
+    <div *ngFor="let user of chartusers">
+      <ion-item (click)="openDetailChat(user)" line="full">
+        <ion-avatar slot="start">
+          <img src="../../../assets/riderprofilepic.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{user.fullname}}</h2>
+          <h3>{{user.contactno}}</h3>
+          <p>{{user.email}}</p>
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
 
 </ion-content>
