@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ModalController } from '@ionic/angular';
 import { ChatdetailComponent } from '../chatdetail/chatdetail.component';
 import { Storage } from '@ionic/storage-angular';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-passangerlist',
@@ -12,10 +12,13 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
   styleUrls: ['./passangerlist.component.scss'],
 })
 export class PassangerlistComponent implements OnInit {
+  @Input() ride_id: any;
+
   chatPassanger:any;
   userData:any;
   
-  constructor(private callNumber: CallNumber, private storage: Storage,public afDB:AngularFireDatabase, public modalController: ModalController,) { }
+  constructor(private callNumber: CallNumber, private storage: Storage,public afDB:AngularFireDatabase, public modalController: ModalController,
+    private http:HttpClient,) { }
 
   async chatDetailModal(user) {
     const modal = await this.modalController.create({
@@ -67,6 +70,20 @@ export class PassangerlistComponent implements OnInit {
   openChat(user){
     // console.log("OPEN CHAT USER", user)
     this.chatDetailModal(user)
+  }
+
+
+  cancelRide(){
+    let data = {
+      driver_id : 1,
+      ride_id : this.ride_id,
+      ride_status: 'cancelled'
+    }
+
+    this.http.post("http://127.0.0.1:5000/updateridestatus", data).subscribe(res => {
+      console.log("DRIVER RIDE STATUS RESPONSE ==>", res)
+    })
+    this.modalController.dismiss()
   }
 
 }

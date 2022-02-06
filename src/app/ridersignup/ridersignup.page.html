@@ -5,98 +5,93 @@
 </ion-header>
 
 <ion-content>
-  <mat-stepper><br><br>
-    <mat-step label="Acc. Details">
-    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)">
-      <ion-item class="inputitem">
-        <ion-label position="floating">Full Name*</ion-label>
-        <ion-input type="text"  ngModel name="fullname" ></ion-input>
-      </ion-item>
+    <mat-stepper><br><br>
+        <mat-step label="Acc. Details">
+          <form #accDetailsForm="ngForm" (ngSubmit)="accDetails(accDetailsForm.value)">
+            <ion-item class="inputitem">
+              <ion-input type="text"  ngModel name="fullname" placeholder="Full Name*"></ion-input>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">Email*</ion-label>
-        <ion-input type="text"  ngModel name="email" ></ion-input>
-      </ion-item>
+            <ion-item class="inputitem">
+              <ion-input type="text"  ngModel name="email" placeholder="Email*"></ion-input>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">Contact No.*</ion-label>
-        <ion-input type="text"  ngModel name="contact" ></ion-input>
-      </ion-item>
+            <ion-item class="inputitem">
+              <ion-input type="text"  ngModel name="contact" placeholder="Contact No.*"></ion-input>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">Role*</ion-label>
-        <ion-select name="role" ngModel >
-          <ion-select-option value="driver">Driver</ion-select-option>
-        </ion-select>
-      </ion-item>
+            <ion-item class="inputitem">
+              <ion-label>Role*</ion-label>
+              <ion-select name="role" ngModel>
+                <ion-select-option value="driver">Driver</ion-select-option>
+              </ion-select>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">Password*</ion-label>
-        <ion-input type="password"  ngModel name="password" ></ion-input>
-      </ion-item>
+            <ion-item class="inputitem">
+              <ion-input type="password"  ngModel name="password" placeholder="Password*"></ion-input>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">Confirm Password*</ion-label>
-        <ion-input type="password"  ngModel name="confirmpassword" ></ion-input>
-      </ion-item><br>
+            <ion-item class="inputitem">
+              <ion-input type="password"  ngModel name="confirmpassword" placeholder="Confirm Password*"></ion-input>
+            </ion-item><br>
 
-      <div>
-        <button class="nextbutton" mat-button matStepperNext type="submit">Next</button>
-      </div>
-    </form>
-    </mat-step>
-    <mat-step label="Car Details">
+            <div>
+              <button class="nextbutton" mat-button matStepperNext >Next</button>
+            </div>
+          </form>
+        </mat-step>
+      
+        <mat-step label="Car Details">
+          <form #carDetailsForm="ngForm" (ngSubmit)="carDetails(carDetailsForm.value)">
+            <ion-item class="inputitem">
+              <ion-input type="number"  ngModel name="aadharno" placeholder="Aadhar No.*"></ion-input>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">Aadhar No.*</ion-label>
-        <ion-input type="number"  ngModel name="name" ></ion-input>
-      </ion-item>
+            <ion-item class="inputitem">
+              <ion-input type="text"  ngModel name="carname" placeholder="Car Name*"></ion-input>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">Car Name*</ion-label>
-        <ion-input type="text"  ngModel name="name" ></ion-input>
-      </ion-item>
+            <ion-item class="inputitem">
+              <ion-input type="text"  ngModel name="carnoplate" placeholder="No. Plate*"></ion-input>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">No. Plate*</ion-label>
-        <ion-input type="text"  ngModel name="name" ></ion-input>
-      </ion-item>
+            <ion-item class="inputitem">
+              <ion-input type="text"  ngModel name="carlicenseno" placeholder="License No.*"></ion-input>
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <ion-label position="floating">License No.*</ion-label>
-        <ion-input type="text"  ngModel name="name" ></ion-input>
-      </ion-item>
+            <ion-item class="inputitem">
+              <label class="myFakeUploadButton"  for="myFileInput">Upload Aadhar Card*</label>
+              <input type="file" id="myFileInput" (change)="onUploadChange($event, 'aadharFile')" accept=".png, .jpg, .jpeg" ngModel name="carfile" >
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <label class="myFakeUploadButton" for="myFileInput">Upload Aadhar Card*</label>
-        <input type="file" id="myFileInput">
-      </ion-item>
+            <ion-item class="inputitem">
+              <label class="myFakeUploadButton"  for="myFileInput">Upload Driving License*</label>
+              <input type="file" id="myFileInput" (change)="onUploadChange($event, 'carFile')" accept=".png, .jpg, .jpeg" ngModel name="licensefile" >
+            </ion-item>
 
-      <ion-item class="inputitem">
-        <label class="myFakeUploadButton" for="myFileInput">Upload Driving License*</label>
-        <input type="file" id="myFileInput">
-      </ion-item>
+            <ion-item class="inputitem">
+              <label class="myFakeUploadButton"  for="myFileInput">Upload Car Document*</label>
+              <input type="file" id="myFileInput" (change)="onUploadChange($event, 'licenseFile')" accept=".png, .jpg, .jpeg" ngModel name="carfile" >
+            </ion-item>
+            <br>
 
-      <ion-item class="inputitem">
-        <label class="myFakeUploadButton" for="myFileInput">Upload Car Document*</label>
-        <input type="file" id="myFileInput">
-      </ion-item>
-      <br>
-
-      <div>
-        <button class="backbutton" mat-button matStepperPrevious type="submit">Back</button>
-        <button class="nextbutton" mat-button matStepperNext type="submit">Submit</button>
-      </div>
-    </mat-step>
+            <div>
+              <button class="backbutton" mat-button matStepperPrevious>Back</button>
+              <button class="nextbutton" mat-button matStepperNext>Submit</button>
+            </div>
+          </form>
+        </mat-step>
+      
+      
     
-  
-    <!-- Icon overrides. -->
-    <ng-template matStepperIcon="phone">
-      <mat-icon>call_end</mat-icon>
-    </ng-template>
-    <ng-template matStepperIcon="chat">
-      <mat-icon>forum</mat-icon>
-    </ng-template>
-  </mat-stepper>
+      <!-- Icon overrides. -->
+      <ng-template matStepperIcon="phone">
+        <mat-icon>call_end</mat-icon>
+      </ng-template>
+      <ng-template matStepperIcon="chat">
+        <mat-icon>forum</mat-icon>
+      </ng-template>
+    </mat-stepper>
+
 
 </ion-content>

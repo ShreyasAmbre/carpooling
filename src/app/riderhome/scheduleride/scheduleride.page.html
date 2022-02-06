@@ -2,7 +2,7 @@
   <ion-grid class="padding0px">
     <ion-row class="ion-align-items-end">
       <ion-col class="padding0px" class="mapcontainer">
-        <img src="../../../assets/img/mapimg.png" alt="map" style="width: 100%; height: 100%; object-fit: fill;">
+        <img src="../../../assets/img/mapimg.png" alt="">
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -10,13 +10,12 @@
     <ion-grid class="padding0px">
       <ion-row class="ion-align-items-end">
         <ion-col class="formcontainer">
+          <div id="map"></div>
           <ion-item class="inputitem" >
-            <!-- <ion-label position="floating" style="color: #00c22a; font-size: large; margin-top: -10px;">Source</ion-label> -->
             <ion-input type="text" name="source" [(ngModel)]="source"  class="inputfields" placeholder="Source"></ion-input>
           </ion-item>
   
           <ion-item class="inputitem" >
-            <!-- <ion-label position="floating" style="color: #00c22a; font-size: large; margin-top: -10px;">Destination</ion-label> -->
             <ion-input type="text" name="destination" [(ngModel)]="destination" class="inputfields" placeholder="Destination"></ion-input>
           </ion-item>
           
@@ -25,6 +24,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  
-
+    
 </ion-content>

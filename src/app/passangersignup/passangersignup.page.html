@@ -8,35 +8,30 @@
   <div style="margin: 7%;">
     <form #passangerSignupForm="ngForm" (ngSubmit)="passangerSignup(passangerSignupForm.value)">
       <ion-item class="inputitem">
-        <ion-label position="floating">Full Name*</ion-label>
-        <ion-input type="text"  ngModel name="fullname" ></ion-input>
+        <ion-input type="text"  ngModel name="fullname" placeholder="Full Name*" ></ion-input>
       </ion-item>
   
       <ion-item class="inputitem">
-        <ion-label position="floating">Email*</ion-label>
-        <ion-input type="text"  ngModel name="email" ></ion-input>
+        <ion-input type="text"  ngModel name="email" placeholder="Email*"></ion-input>
       </ion-item>
   
       <ion-item class="inputitem">
-        <ion-label position="floating">Contact No.*</ion-label>
-        <ion-input type="text"  ngModel name="contact" ></ion-input>
+        <ion-input type="text"  ngModel name="contact" placeholder="Contact No.*"></ion-input>
       </ion-item>
   
       <ion-item class="inputitem">
-        <ion-label position="floating">Role*</ion-label>
+        <ion-label>Role*</ion-label>
         <ion-select name="role" ngModel >
           <ion-select-option value="passanger">Passanger</ion-select-option>
         </ion-select>
       </ion-item>
   
       <ion-item class="inputitem">
-        <ion-label position="floating">Password*</ion-label>
-        <ion-input type="password"  ngModel name="password" ></ion-input>
+        <ion-input type="password"  ngModel name="password" aria-placeholder="Password*"></ion-input>
       </ion-item>
   
       <ion-item class="inputitem">
-        <ion-label position="floating">Confirm Password*</ion-label>
-        <ion-input type="password"  ngModel name="confirmpassword" ></ion-input>
+        <ion-input type="password"  ngModel name="confirmpassword" aria-placeholder="Confirm Password*"></ion-input>
       </ion-item><br>
   
       <ion-button type="submit" expand="block"><b>Sign Up</b></ion-button>

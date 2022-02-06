@@ -1,21 +1,11 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary" class="toolbar"  slots="start" >
-    <ion-buttons slot="start" size="large">
-      <ion-menu-button autoHide="false">
-        <ion-icon src="../../assets/icon/menu.svg" style="color: white;"></ion-icon>
-      </ion-menu-button>
-    </ion-buttons>
-    <!-- <ion-buttons slot="end" size="large">
-      <ion-menu-button auto-hide="false">
-        <app-notification></app-notification>
-      </ion-menu-button>
-    </ion-buttons> -->
     <ion-title>UpComing Rides</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-tabs >
+  <ion-tabs>
 
     <!-- TOP TABS -->
     <ion-tab-bar *ngIf="router.url == '/passangerhome/passangerhome/passangerupcomingrides' || router.url == '/passangerhome/passangerhome/passangerhistoryrides'" color="primary" slot="top">

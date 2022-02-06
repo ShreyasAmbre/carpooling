@@ -1,217 +1,57 @@
 <ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
   
-
-  <ion-card style="margin: 0% !important; padding: 0% !important; box-shadow: 0 0 8px 3px #B8B8B8;">
-    <div class="row" style="height: 130px; ">
-      <div class="col-3" style="height: 70px; margin-top: 5%; padding-right: 0px; padding-right: 0px;">
-        <div style=" border-radius: 10px; font-size: 35px; color: white; float: right; padding-top: 4%;  width: 70px; height: 60px; background-color: #e6ffe6; vertical-align: middle; display: table-cell; text-align: center;">
-          <img src="../../../assets/icon/carlist.png" alt="car" width="50" height="50">
+  <ng-container *ngFor="let item of upcomingRides">
+    <ion-card class="ionCardContainer">
+      <div class="row" style="height: 130px;">
+        <div class="col-3 imgParentContainer">
+          <div class="imgContainer">
+            <img src="../../../assets/icon/carlist.png" alt="car" width="50" height="50">
+          </div>
         </div>
-      </div>
-      <div class="col-6" style="height: auto; padding-right: 0px; margin-right: 0px;">
-        <div class="row" style="margin-top: 15%; margin-bottom: 0px; padding-bottom: 0px;">
-          <div class="col-1">
-            <div style="width: 10px; height: 8px; background-color: #00c22a; border-radius: 50px; "></div>
-            <div style="width: 10px; height: 15px; border-left: 3px solid rgb(162, 167, 162); margin-left: 3px;"></div>
-            <div style="width: 10px; height: 8px; background-color: rgb(255, 204, 0); border-radius: 50px;"></div>
-          </div>
-          <div class="col-9" style="padding-right: 0px; margin-right: 0px;">
-            <p style="padding-bottom: 0px; margin-bottom: 0px; margin-top: -5px; font-size: 14px;"><b>Washinton Square </b></p>
-            <p style="padding-bottom: 0px; margin-bottom: 0px;  font-size: 14px; letter-spacing: 0.5px;"><b>Harison, Newark</b></p>
-          </div>
-          <div class="row" style="margin-bottom: 0px; padding-bottom: 0px !important;">
-            <div class="col-12">
-              <p style="font-size: 14px; margin-top: 3%; margin-bottom: 0px"><b>25 Feb 2021 12:10pm</b></p>
+        <div class="col-6 contentContainer">
+          <div class="row contentRowContainer">
+            <div class="col-1">
+              <div style="width: 10px; height: 8px; background-color: #00c22a; border-radius: 50px; "></div>
+              <div style="width: 10px; height: 15px; border-left: 3px solid rgb(162, 167, 162); margin-left: 3px;"></div>
+              <div style="width: 10px; height: 8px; background-color: rgb(255, 204, 0); border-radius: 50px;"></div>
+            </div>
+            <div class="col-9" style="padding-right: 0px; margin-right: 0px;">
+              <p class="source"><b>{{item.sources}} </b></p>
+              <p class="destination"><b>{{item.destination}}</b></p>
+            </div>
+            <div class="row" style="margin-bottom: 0px; padding-bottom: 0px !important;">
+              <div class="col-12">
+                <p class="rideDetails"><b>{{item.date_of_ride}} {{item.time_of_ride}}</b></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-3" style="height: auto; ">
-        <div class="row" style="margin-top: 30%">
-          <h1 style="color: rgb(230, 195, 0);">$ 20</h1>
-          <p style="color: rgb(134, 129, 123);">2 Seats</p>
+        <div class="col-3" style="height: auto; ">
+          <div class="row" style="margin-top: 30%">
+            <h1 style="color: rgb(230, 195, 0);">$ {{item.ride_fare}}</h1>
+            <p style="color: rgb(134, 129, 123);">{{item.passanger_required}} Seats</p>
+          </div>
+        </div>
+        <div class="row" style="height: 30px; padding: 0px; margin: 0px;">
+          <div class="col-8">
+            <p class="carDetails" style=""><b>{{item.car_name}} | {{item.car_number_plate}}</b></p>
+          </div>
+          <div class="col-4" style="padding-right: 10%; padding: 0px;">
+            <ion-button size="small" (click)="openpassangerlist(item)" class="passangerBtn">
+              PASSANGER</ion-button>
+          </div>
         </div>
       </div>
-      <div class="row" style="height: 30px; padding: 0px; margin: 0px;">
-        <div class="col-8">
-          <p style="font-size: 14px; margin-top: 3%; padding-top: 0px; margin-top: 0px; margin-left: 7%; color: rgb(134, 129, 123); color: #00c22a;;"><b>Honda Civic | MH 48 E 0789</b></p>
-        </div>
-        <div class="col-4" style="padding-right: 10%; padding: 0px;">
-          <ion-button size="small" (click)="openpassangerlist()" style="margin-top:-8%; margin-left: 3%; background-color: greenyellow; border-radius: 5px;">
-            PASSANGER</ion-button>
-        </div>
-      </div>
-    </div>
-  </ion-card>
+    </ion-card>
+  </ng-container>
 
-  <ion-card style="margin: 0% !important; padding: 0% !important; box-shadow: 0 0 8px 3px #B8B8B8;">
-    <div class="row" style="height: 130px; ">
-      <div class="col-3" style="height: 70px; margin-top: 5%; padding-right: 0px; padding-right: 0px;">
-        <div style=" border-radius: 10px; font-size: 35px; color: white; float: right; padding-top: 4%;  width: 70px; height: 60px; background-color: #e6ffe6; vertical-align: middle; display: table-cell; text-align: center;">
-          <img src="../../../assets/icon/carlist.png" alt="car" width="50" height="50">
-        </div>
-      </div>
-      <div class="col-6" style="height: auto; padding-right: 0px; margin-right: 0px;">
-        <div class="row" style="margin-top: 15%; margin-bottom: 0px; padding-bottom: 0px;">
-          <div class="col-1">
-            <div style="width: 10px; height: 8px; background-color: #00c22a; border-radius: 50px; "></div>
-            <div style="width: 10px; height: 15px; border-left: 3px solid rgb(162, 167, 162); margin-left: 3px;"></div>
-            <div style="width: 10px; height: 8px; background-color: rgb(255, 204, 0); border-radius: 50px;"></div>
-          </div>
-          <div class="col-9" style="padding-right: 0px; margin-right: 0px;">
-            <p style="padding-bottom: 0px; margin-bottom: 0px; margin-top: -5px; font-size: 14px;"><b>Washinton Square </b></p>
-            <p style="padding-bottom: 0px; margin-bottom: 0px;  font-size: 14px; letter-spacing: 0.5px;"><b>Harison, Newark</b></p>
-          </div>
-          <div class="row" style="margin-bottom: 0px; padding-bottom: 0px !important;">
-            <div class="col-12">
-              <p style="font-size: 14px; margin-top: 3%; margin-bottom: 0px"><b>25 Feb 2021 12:10pm</b></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-3" style="height: auto; ">
-        <div class="row" style="margin-top: 30%">
-          <h1 style="color: rgb(230, 195, 0);">$ 20</h1>
-          <p style="color: rgb(134, 129, 123);">2 Seats</p>
-        </div>
-      </div>
-      <div class="row" style="height: 30px; padding: 0px; margin: 0px;">
-        <div class="col-8">
-          <p style="font-size: 14px; margin-top: 3%; padding-top: 0px; margin-top: 0px; margin-left: 7%; color: rgb(134, 129, 123); color: #00c22a;;"><b>Honda Civic | MH 48 E 0789</b></p>
-        </div>
-        <div class="col-4" style="padding-right: 10%; padding: 0px;">
-          <ion-button size="small" style="margin-top:-8%; margin-left: 3%; background-color: greenyellow; border-radius: 5px;">PASSANGER</ion-button>
-        </div>
-      </div>
-    </div>
-  </ion-card>
-
-  <ion-card style="margin: 0% !important; padding: 0% !important; box-shadow: 0 0 8px 3px #B8B8B8;">
-    <div class="row" style="height: 130px; ">
-      <div class="col-3" style="height: 70px; margin-top: 5%; padding-right: 0px; padding-right: 0px;">
-        <div style=" border-radius: 10px; font-size: 35px; color: white; float: right; padding-top: 4%;  width: 70px; height: 60px; background-color: #e6ffe6; vertical-align: middle; display: table-cell; text-align: center;">
-          <img src="../../../assets/icon/carlist.png" alt="car" width="50" height="50">
-        </div>
-      </div>
-      <div class="col-6" style="height: auto; padding-right: 0px; margin-right: 0px;">
-        <div class="row" style="margin-top: 15%; margin-bottom: 0px; padding-bottom: 0px;">
-          <div class="col-1">
-            <div style="width: 10px; height: 8px; background-color: #00c22a; border-radius: 50px; "></div>
-            <div style="width: 10px; height: 15px; border-left: 3px solid rgb(162, 167, 162); margin-left: 3px;"></div>
-            <div style="width: 10px; height: 8px; background-color: rgb(255, 204, 0); border-radius: 50px;"></div>
-          </div>
-          <div class="col-9" style="padding-right: 0px; margin-right: 0px;">
-            <p style="padding-bottom: 0px; margin-bottom: 0px; margin-top: -5px; font-size: 14px;"><b>Washinton Square </b></p>
-            <p style="padding-bottom: 0px; margin-bottom: 0px;  font-size: 14px; letter-spacing: 0.5px;"><b>Harison, Newark</b></p>
-          </div>
-          <div class="row" style="margin-bottom: 0px; padding-bottom: 0px !important;">
-            <div class="col-12">
-              <p style="font-size: 14px; margin-top: 3%; margin-bottom: 0px"><b>25 Feb 2021 12:10pm</b></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-3" style="height: auto; ">
-        <div class="row" style="margin-top: 30%">
-          <h1 style="color: rgb(230, 195, 0);">$ 20</h1>
-          <p style="color: rgb(134, 129, 123);">2 Seats</p>
-        </div>
-      </div>
-      <div class="row" style="height: 30px; padding: 0px; margin: 0px;">
-        <div class="col-8">
-          <p style="font-size: 14px; margin-top: 3%; padding-top: 0px; margin-top: 0px; margin-left: 7%; color: rgb(134, 129, 123); color: #00c22a;;"><b>Honda Civic | MH 48 E 0789</b></p>
-        </div>
-        <div class="col-4" style="padding-right: 10%; padding: 0px;">
-          <ion-button size="small" style="margin-top:-8%; margin-left: 3%; background-color: greenyellow; border-radius: 5px;">PASSANGER</ion-button>
-        </div>
-      </div>
-    </div>
-  </ion-card>
-
-  <ion-card style="margin: 0% !important; padding: 0% !important; box-shadow: 0 0 8px 3px #B8B8B8;">
-    <div class="row" style="height: 130px; ">
-      <div class="col-3" style="height: 70px; margin-top: 5%; padding-right: 0px; padding-right: 0px;">
-        <div style=" border-radius: 10px; font-size: 35px; color: white; float: right; padding-top: 4%;  width: 70px; height: 60px; background-color: #e6ffe6; vertical-align: middle; display: table-cell; text-align: center;">
-          <img src="../../../assets/icon/carlist.png" alt="car" width="50" height="50">
-        </div>
-      </div>
-      <div class="col-6" style="height: auto; padding-right: 0px; margin-right: 0px;">
-        <div class="row" style="margin-top: 15%; margin-bottom: 0px; padding-bottom: 0px;">
-          <div class="col-1">
-            <div style="width: 10px; height: 8px; background-color: #00c22a; border-radius: 50px; "></div>
-            <div style="width: 10px; height: 15px; border-left: 3px solid rgb(162, 167, 162); margin-left: 3px;"></div>
-            <div style="width: 10px; height: 8px; background-color: rgb(255, 204, 0); border-radius: 50px;"></div>
-          </div>
-          <div class="col-9" style="padding-right: 0px; margin-right: 0px;">
-            <p style="padding-bottom: 0px; margin-bottom: 0px; margin-top: -5px; font-size: 14px;"><b>Washinton Square </b></p>
-            <p style="padding-bottom: 0px; margin-bottom: 0px;  font-size: 14px; letter-spacing: 0.5px;"><b>Harison, Newark</b></p>
-          </div>
-          <div class="row" style="margin-bottom: 0px; padding-bottom: 0px !important;">
-            <div class="col-12">
-              <p style="font-size: 14px; margin-top: 3%; margin-bottom: 0px"><b>25 Feb 2021 12:10pm</b></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-3" style="height: auto; ">
-        <div class="row" style="margin-top: 30%">
-          <h1 style="color: rgb(230, 195, 0);">$ 20</h1>
-          <p style="color: rgb(134, 129, 123);">2 Seats</p>
-        </div>
-      </div>
-      <div class="row" style="height: 30px; padding: 0px; margin: 0px;">
-        <div class="col-8">
-          <p style="font-size: 14px; margin-top: 3%; padding-top: 0px; margin-top: 0px; margin-left: 7%; color: rgb(134, 129, 123); color: #00c22a;;"><b>Honda Civic | MH 48 E 0789</b></p>
-        </div>
-        <div class="col-4" style="padding-right: 10%; padding: 0px;">
-          <ion-button size="small" style="margin-top:-8%; margin-left: 3%; background-color: greenyellow; border-radius: 5px;">PASSANGER</ion-button>
-        </div>
-      </div>
-    </div>
-  </ion-card>
-
-  <ion-card style="margin: 0% !important; padding: 0% !important; box-shadow: 0 0 8px 3px #B8B8B8;">
-    <div class="row" style="height: 130px; ">
-      <div class="col-3" style="height: 70px; margin-top: 5%; padding-right: 0px; padding-right: 0px;">
-        <div style=" border-radius: 10px; font-size: 35px; color: white; float: right; padding-top: 4%;  width: 70px; height: 60px; background-color: #e6ffe6; vertical-align: middle; display: table-cell; text-align: center;">
-          <img src="../../../assets/icon/carlist.png" alt="car" width="50" height="50">
-        </div>
-      </div>
-      <div class="col-6" style="height: auto; padding-right: 0px; margin-right: 0px;">
-        <div class="row" style="margin-top: 15%; margin-bottom: 0px; padding-bottom: 0px;">
-          <div class="col-1">
-            <div style="width: 10px; height: 8px; background-color: #00c22a; border-radius: 50px; "></div>
-            <div style="width: 10px; height: 15px; border-left: 3px solid rgb(162, 167, 162); margin-left: 3px;"></div>
-            <div style="width: 10px; height: 8px; background-color: rgb(255, 204, 0); border-radius: 50px;"></div>
-          </div>
-          <div class="col-9" style="padding-right: 0px; margin-right: 0px;">
-            <p style="padding-bottom: 0px; margin-bottom: 0px; margin-top: -5px; font-size: 14px;"><b>Washinton Square </b></p>
-            <p style="padding-bottom: 0px; margin-bottom: 0px;  font-size: 14px; letter-spacing: 0.5px;"><b>Harison, Newark</b></p>
-          </div>
-          <div class="row" style="margin-bottom: 0px; padding-bottom: 0px !important;">
-            <div class="col-12">
-              <p style="font-size: 14px; margin-top: 3%; margin-bottom: 0px"><b>25 Feb 2021 12:10pm</b></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-3" style="height: auto; ">
-        <div class="row" style="margin-top: 30%">
-          <h1 style="color: rgb(230, 195, 0);">$ 20</h1>
-          <p style="color: rgb(134, 129, 123);">2 Seats</p>
-        </div>
-      </div>
-      <div class="row" style="height: 30px; padding: 0px; margin: 0px;">
-        <div class="col-8">
-          <p style="font-size: 14px; margin-top: 3%; padding-top: 0px; margin-top: 0px; margin-left: 7%; color: rgb(134, 129, 123); color: #00c22a;;"><b>Honda Civic | MH 48 E 0789</b></p>
-        </div>
-        <div class="col-4" style="padding-right: 10%; padding: 0px;">
-          <ion-button size="small" style="margin-top:-8%; margin-left: 3%; background-color: greenyellow; border-radius: 5px;">PASSANGER</ion-button>
-        </div>
-      </div>
-    </div>
-  </ion-card>
-
-  
+  <div class="row" *ngIf="upcomingRides.length <= 0">
+    <img src="assets/svg/no-data.svg" alt="no-data" class="no-data-img">
+    <span class="no-data-txt">No Upcoming Rides Available</span>
+  </div>
   
 </ion-content>

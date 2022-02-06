@@ -21,7 +21,11 @@ import { FormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 
-import { PassangernavsPageModule } from './component/passangernavs/passangernavs.module'
+import { PassangernavsPageModule } from './component/passangernavs/passangernavs.module';
+
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import {HttpClientModule} from '@angular/common/http';
 
 
 var firebaseConfig = {
@@ -40,8 +44,8 @@ var firebaseConfig = {
   declarations: [AppComponent, ChatdetailComponent, PassangerlistComponent],
   entryComponents: [],
   imports: [PassangernavsPageModule, IonicStorageModule.forRoot(), FormsModule, AngularFirestoreModule, AngularFireDatabaseModule, AngularFireAuthModule, AngularFireModule.initializeApp(firebaseConfig), 
-            BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
-  providers: [CallNumber, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+            BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, HttpClientModule],
+  providers: [Geolocation, NativeGeocoder, CallNumber, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -22,7 +22,7 @@ export class ChatdetailComponent implements OnInit {
 
   ngOnInit() {
     this.storage.create();
-    console.log("FROM DETAIL CHAT USER ===>", this.user)
+    // console.log("FROM DETAIL CHAT USER ===>", this.user)
     this.passangerData = this.user
     this.storage.get("user").then(res => {
       this.driverData = res
@@ -64,12 +64,12 @@ export class ChatdetailComponent implements OnInit {
   getAllMessages(userData){
     if(userData["role"]=== "driver"){
       this.afDB.list(`messages/${this.driverData["id"]}/`+this.driverData["id"]+this.passangerData["id"]).valueChanges().subscribe(res =>{
-        console.log("MESSAGES DRIVER ===>", res)
+        // console.log("MESSAGES DRIVER ===>", res)
         this.chats = res
       })
     }else if(userData["role"]=== "passanger"){
       this.afDB.list(`messages/${this.passangerData["id"]}/`+this.passangerData["id"]+this.driverData["id"]).valueChanges().subscribe(res =>{
-        console.log("MESSAGES PASSANGER===>", res)
+        // console.log("MESSAGES PASSANGER===>", res)
         this.chats = res
       })
     }

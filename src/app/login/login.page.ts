@@ -7,6 +7,15 @@ import { LoadingController } from '@ionic/angular';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Storage } from '@ionic/storage-angular';
 
+
+
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token,
+} from '@capacitor/push-notifications';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,7 +27,7 @@ export class LoginPage implements OnInit {
 
 
   constructor(private storage: Storage, private router:Router, public afStore: AngularFirestore, public ngFireAuth: AngularFireAuth, 
-              public alertController: AlertController, public loadingController: LoadingController, public afDB:AngularFireDatabase,) { }
+              public alertController: AlertController, public loadingController: LoadingController, public afDB:AngularFireDatabase) { }
 
   async errorAlert(headerMsg, subTitleMsg, errorMsg) {
     const alert = await this.alertController.create({
@@ -39,7 +48,6 @@ export class LoginPage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
-      // duration: 2000
     });
     await loading.present();
 
@@ -52,24 +60,15 @@ export class LoginPage implements OnInit {
   }
 
   login(data){
-    this.presentLoading()
-    // console.log("Login Data", data)
     this.ngFireAuth.signInWithEmailAndPassword(data.email, data.password).then(res => {
-      // console.log("LOGIN RES ===> ", res.user)
       this.getUserDetails(res.user)
-      this.loadingController.dismiss()
-      
-
     }).catch(error => {
-      // console.log("LOGIN ERROR", error)
-      this.loadingController.dismiss()
-      this.errorAlert("ERROR", "Login Failed", error)
+      this.errorAlert("ERROR", "Login Failed", "Invalid Credentials")
     })
   }
 
   getUserDetails(user){
     this.afDB.list('users/', ref => ref.orderByChild("id").equalTo(user._delegate.uid)).valueChanges().subscribe(res => {
-      // console.log("USERS DETAILS", res[0])
       this.storage.set('user', res[0]);
 
       if(res[0]["role"] === "driver")
@@ -84,8 +83,11 @@ export class LoginPage implements OnInit {
   showpass(){
     this.fieldtype = "text"
   }
+
   hidepass(){
     this.fieldtype = "password"
   }
+
+
 
 }

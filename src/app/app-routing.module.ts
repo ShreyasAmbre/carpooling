@@ -3,17 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  // {
-  //   path: 'ridersignup',
-  //   loadChildren: () => import('./ridersignup/ridersignup.module').then( m => m.RidersignupPageModule)
-  // },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
   },
   {
     path: 'forgetpassword',
@@ -55,10 +51,10 @@ const routes: Routes = [
     path: 'passangerhome',
     loadChildren: () => import('./passangerhome/passangerhome.module').then( m => m.PassangerhomePageModule)
   },
-  // {
-  //   path: 'passangerprofile',
-  //   loadChildren: () => import('./passangerprofile/passangerprofile.module').then( m => m.PassangerprofilePageModule)
-  // },
+  {
+    path: 'passangerprofile',
+    loadChildren: () => import('./passangerprofile/passangerprofile.module').then( m => m.PassangerprofilePageModule)
+  },
   
 ];
 

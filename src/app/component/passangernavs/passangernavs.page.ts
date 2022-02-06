@@ -23,14 +23,19 @@ export class PassangernavsPage implements OnInit {
     [
       {
         title : "Profile",
-        url   : "/passangerprofile",
+        url   : "/riderprofile",
         icon  : "person-outline"
       },
       {
-        title : "Logout",
-        url   : "/",
-        icon  : "log-out-outline"
+        title : "Home",
+        url   : "/riderhome",
+        icon  : "home-outline"
       },
+      {
+        title : "Logout",
+        url   : "/login",
+        icon  : "log-out-outline"
+      }
     ]
   }
 

@@ -1,23 +1,27 @@
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
   <div class="ion-padding">
     <ion-card>
-      <ion-card-header> Bar Chart </ion-card-header>
+      <ion-card-header> Driver Ratings  </ion-card-header>
       <ion-card-content >
         <canvas id="myChart" width="400" height="400"></canvas>        
       </ion-card-content>
     </ion-card>
 
 
-    <ion-card>
-      <ion-card-header> Doughnut Chart </ion-card-header>
+    <ion-card style="padding-left: 3% !important; padding-right: 3% !important;">
+      <ion-card-header>  Rides Status  </ion-card-header>
       <ion-card-content >
         <ion-grid>
             <p>
-              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color: #36A2EB"><ion-label>Success Rides</ion-label></ion-chip>
-              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color: #36eb6c;"><ion-label>Upcoming Rides</ion-label></ion-chip>
-              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color: #FFCE56;"><ion-label>Ratings</ion-label></ion-chip>
-              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color: #d363ff;"><ion-label>Income</ion-label></ion-chip>
-              <ion-chip style="border: 1px solid greenyellow; background-color: white ;color:#FF6384"><ion-label>Calcel Rides</ion-label></ion-chip>
+              <ion-chip class="chips" style="color: #eb3636"><ion-label>Cancelled</ion-label></ion-chip>
+              <ion-chip class="chips" style="color: #87ff63;"><ion-label>Completed</ion-label></ion-chip>
+              <ion-chip class="chips" style="color:#7363ff"><ion-label>UpComing</ion-label></ion-chip>
             </p>
             
         </ion-grid>

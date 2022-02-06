@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
-// import { Chart} from 'angular-highcharts';
-// import {donutChartsOptions} from './helpers/donutChartOption';
 import { Chart, LinearScale, CategoryScale, BarController, BarElement,
         DoughnutController, ArcElement , LegendOptions, Legend, LegendElement, LegendItem, registerables} from 'chart.js';
+import {HttpClient} from "@angular/common/http";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-more',
@@ -17,9 +17,50 @@ export class MorePage implements OnInit {
   myDonut:any;
   opt:any;
 
-  constructor() { }
+  upcomingRidesLength = 0
+  historyRidesLength = 0
+  completedRidesLength = 0
+
+  constructor(private http:HttpClient, ) { }
 
   ngOnInit() {
+    this.getAllRides()
+  }
+
+  getAllRides(){
+    let data = {
+      driver_id : 1
+    }
+    this.http.post("http://127.0.0.1:5000/getdriverrides", data).subscribe(res => {
+      let allRides = JSON.parse('[' + res + ']')[0]
+      let todaysDate = moment().format('YYYY MM DD')
+      let upcomingRides = []
+      let historyRides = []
+      let completedRides = []
+      for (let index = 0; index < allRides.length; index++) {
+        let dateOfRide = allRides[index]["date_of_ride"]
+        if((moment(dateOfRide).isSame(moment(), 'day') || moment(dateOfRide).isAfter(todaysDate)) && 
+            allRides[index]["ride_status"] !== "cancelled"){
+          upcomingRides.push(allRides[index])
+        }
+        if(moment(dateOfRide).isBefore(todaysDate) || allRides[index]["ride_status"] !== "pending"){
+          
+          allRides[index]["ride_status"] === "pending" ? completedRides.push(allRides[index]) : historyRides.push(allRides[index])
+          
+        }
+        this.upcomingRidesLength = upcomingRides.length
+        this.historyRidesLength = historyRides.length
+        this.completedRidesLength = completedRides.length
+      }
+      // console.log("ALL RIDES RESPONSE ==>", allRides)
+      // console.log("UPCOMING UPCOMING RIDES ==>", upcomingRides)
+      // console.log("UPCOMING HISTORY RIDES ==>", historyRides)
+      // console.log("UPCOMING COMPLETED RIDES ==>", completedRides)
+      this.createChart()
+    })
+  }
+
+  createChart(){
     var ctx = document.getElementById('myChart')as HTMLCanvasElement;
     var ctxDonut = document.getElementById('myDonut')as HTMLCanvasElement;
     Chart.register(LinearScale, CategoryScale, BarController, BarController,  BarElement,
@@ -27,25 +68,23 @@ export class MorePage implements OnInit {
     this.myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: ['Bad', 'Better', 'Good', 'Great', 'Superb'],
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              label: 'Rides Status Count',
+              data: [1, 1, 3, 4.5, 5],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+                "rgba(235,163,54, 0.2)"   ,
+                "rgba(235, 54, 54, 0.2)"  ,
+                "rgba(255, 251, 0, 0.2)"  ,
+                "rgba(135, 255, 99, 0.2)" ,
+                "rgba(115, 99, 255, 0.2)" ,
               ],
               borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
+                "rgba(235,163,54, 1)"   ,
+                "rgba(235, 54, 54, 1)"  ,
+                "rgba(255, 251, 0, 1)"  ,
+                "rgba(135, 255, 99, 1)" ,
+                "rgba(115, 99, 255, 1)" ,
               ],
               borderWidth: 1
           }]
@@ -68,19 +107,17 @@ export class MorePage implements OnInit {
     this.myDonut = new Chart(ctxDonut, {
       type: "doughnut",
       data: {
-        labels: ["Cancel Ride", "Success Ride", "Ratings", "Upcoming Rides", "Income"],
+        labels: ["Cancelled", "Completed", "UpComing"],
         datasets: [
           {
             label: "# of Votes",
-            data: [12, 19, 3, 5, 2],
+            data: [this.historyRidesLength, this.completedRidesLength, this.upcomingRidesLength],
             backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
+              "rgba(235,163,54, 0.2)"   ,
+              "rgba(135, 255, 99, 0.2)" ,
+              "rgba(115, 99, 255, 0.2)" ,
             ],
-            hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#36eb6c", "#d363ff",]
+            hoverBackgroundColor: ["#eb3636", "#87ff63", "#7363ff",]
           }
         ],
       },
@@ -99,5 +136,24 @@ export class MorePage implements OnInit {
       
     });
   }
+
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      this.upcomingRidesLength = 0
+      this.historyRidesLength = 0
+      this.completedRidesLength = 0
+      this.getAllRides()
+      event.target.complete();
+    }, 2000);
+  }
+
+
+
+
+
+
   
 }

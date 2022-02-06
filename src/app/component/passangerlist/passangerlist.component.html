@@ -3,13 +3,15 @@
     <ion-title> 
       Passanger List
     </ion-title>
+    <ion-buttons slot="end">
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
   <ion-list>
-    <ion-item-sliding *ngFor="let user of chatPassanger">
+    <ion-item-sliding>
       <ion-item-options side="start" (click)="callNow('8087024368')">
         <ion-item-option expandable style="background-color: cornflowerblue;">
           Call
@@ -21,9 +23,34 @@
           <img src="../../../assets/riderprofilepic.png">
         </ion-avatar>
         <ion-label>
-          <h2>{{user.fullname}}</h2>
-          <h3>{{user.contactno}}</h3>
-          <p>{{user.email}}</p>
+          <h2>Passanger 1</h2>
+          <h3>+91 8596874587</h3>
+          <p>passangerone@gmail.com</p>
+        </ion-label>
+      </ion-item>
+  
+      <ion-item-options side="end">
+        <ion-item-option (click)="openChat(user)" expandable style="background-color: #25d366;">
+          <b>Chat</b>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item-options side="start" (click)="callNow('8087024368')">
+        <ion-item-option expandable style="background-color: cornflowerblue;">
+          Call
+        </ion-item-option>
+      </ion-item-options>
+  
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="../../../assets/riderprofilepic.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>Passanger 2</h2>
+          <h3>+91 9966857489</h3>
+          <p>passangertwo@gmail.com</p>
         </ion-label>
       </ion-item>
   
@@ -36,5 +63,7 @@
   
     
   </ion-list>
+
+  <ion-button color="danger" class="cancelBtn" (click)="cancelRide()">Cancel Ride</ion-button>
   
 </ion-content>

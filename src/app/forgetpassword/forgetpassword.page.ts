@@ -49,16 +49,10 @@ export class ForgetpasswordPage implements OnInit {
   }
 
   forgetpassword(data){
-    // console.log("FORGET PASSWORD RES ===>", data)
-    this.presentLoading()
     this.ngFireAuth.sendPasswordResetEmail(data.email).then(res => {
-      // console.log("RESET PASSWORD RES ===> ", res)
-      this.loadingController.dismiss()
       this.router.navigateByUrl('/login');
 
     }).catch(error => {
-      // console.log("RESET PASSWORD ERROR", error)
-      this.loadingController.dismiss()
       this.errorAlert("ERROR", "Password Reset Failed", error)
     })
   }

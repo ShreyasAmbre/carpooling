@@ -4,6 +4,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import {HttpClient} from "@angular/common/http";
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-passangersignup',
@@ -12,7 +15,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class PassangersignupPage implements OnInit {
 
-  constructor(private router:Router, public afDB:AngularFireDatabase ,public afStore: AngularFirestore, public ngFireAuth: AngularFireAuth, public alertController: AlertController) { }
+  constructor(private router:Router, public afDB:AngularFireDatabase ,public afStore: AngularFirestore, public ngFireAuth: AngularFireAuth, 
+    public alertController: AlertController, private http:HttpClient, public toastController: ToastController) { }
 
   async errorAlert(headerMsg, subTitleMsg, errorMsg) {
     const alert = await this.alertController.create({
@@ -22,11 +26,16 @@ export class PassangersignupPage implements OnInit {
       message: errorMsg,
       buttons: ['OK']
     });
-
     await alert.present();
-
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
+  }
+  async successToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
   
   
@@ -34,10 +43,20 @@ export class PassangersignupPage implements OnInit {
   }
 
   passangerSignup(data){
-    // console.log("SIGNUP DATA ===>", data)
-    this.ngFireAuth.createUserWithEmailAndPassword(data.email, data.password).then(res => {
-      // console.log("SIGNUP RES ===>", res)
+    console.log("PASSANGER SIGNUP DATA ===>", data)
 
+    this.http.post("http://127.0.0.1:5000/passangersignup",data).subscribe(res => {
+      console.log("PASSANGER RESPONSE SIGUP ==>", res)
+      if(res["msg"] == "Account Created"){
+        this.firebaseSignUp(data)
+        }else{
+        this.successToast("Something went wrong")
+      }
+    })
+  }
+
+  firebaseSignUp(data){
+    this.ngFireAuth.createUserWithEmailAndPassword(data.email, data.password).then(res => {
       let user = {
         fullname: data.fullname,
         contactno: data.contact,
@@ -46,22 +65,20 @@ export class PassangersignupPage implements OnInit {
         role: data.role
       };
 
-      this.addUser(user)
+      this.firebaseAddUser(user)
 
     }).catch(errors => {
-      // console.log("SIGNUP ERROR ===>", errors)
       this.errorAlert("ERROR", "Signup Failed", errors.message)
     })
   }
 
-
-  // User data is added in seprate collection for further features like Chats and Push Notification
-  addUser(userData){
+  firebaseAddUser(userData){
     this.afDB.list("users/").push(userData).then(res => {
-      // console.log("ADD USER RES ===>", res)
+      this.successToast("Account Created")
       this.router.navigateByUrl('/login');
     }).catch(e=> {
-      // console.log("ADD USER ERROR ===>", e)
     })
   }
+
+  
 }

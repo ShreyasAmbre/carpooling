@@ -6,11 +6,7 @@
       </ion-menu-button>
     </ion-buttons>
     <ion-title>Rider Profile</ion-title>
-    <ion-buttons slot="end" size="large">
-      <ion-menu-button autoHide="false">
-        <img src="../../assets/icon/bell.png">
-      </ion-menu-button>
-    </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -20,7 +16,7 @@
       <div class="col-5 offset-3 align-self-center">
         <div class="profilepiccontainer">
           <img src="../../assets/riderprofilepic.png" alt="profile_pic" width="110" height="110" class="profilepic">
-          <i class="fa fa-camera"></i>
+          <i class="fa fa-edit" (click)="editprofile()"></i>
         </div>
       </div>
     </div>
@@ -31,7 +27,7 @@
         <img src="../../assets/icon/profile.png">
       </ion-avatar>
       <ion-label>
-        <p class="deails">Mr. Shreyas Ambre</p>
+        <p class="deails">{{profileData?.fullname}}</p>
       </ion-label>
     </ion-item>
 
@@ -40,7 +36,7 @@
         <img src="../../assets/icon/contact1.png">
       </ion-avatar>
       <ion-label>
-        <p class="deails">+91 8149421528</p>
+        <p class="deails">+91 {{profileData?.contact}}</p>
       </ion-label>
     </ion-item>
 
@@ -49,7 +45,7 @@
         <img src="../../assets/icon/gmail.png">
       </ion-avatar>
       <ion-label>
-        <p class="deails">shreyasambre00@gmail.com</p>
+        <p class="deails">{{profileData?.email}}</p>
       </ion-label>
     </ion-item>
 
@@ -59,7 +55,7 @@
         <img src="../../assets/icon/car.png">
       </ion-avatar>
       <ion-label>
-        <p class="deails">Vitara Brezza</p>
+        <p class="deails">{{profileData?.carname}}</p>
       </ion-label>
     </ion-item>
 
@@ -68,7 +64,7 @@
         <img src="../../assets/icon/noplate.png">
       </ion-avatar>
       <ion-label>
-        <p class="deails">MH 48 E 4027</p>
+        <p class="deails">{{profileData?.carnoplate}}</p>
       </ion-label>
     </ion-item>
   </ion-list>
