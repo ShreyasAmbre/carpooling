@@ -1,0 +1,37 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" class="toolbar"  slots="start" >
+    <ion-title> 
+      Driver Detail
+    </ion-title>
+    <ion-buttons slot="end" style="margin-right: 4%; font-size: larger;" (click)="modalController.dismiss()">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="../../../assets/riderprofilepic.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{driverDetails.fullname}}</h2>
+          <h3>+91 {{driverDetails.contact}}</h3>
+          <p>{{driverDetails.email}}</p>
+        </ion-label>
+        
+      </ion-item>
+      <div style="margin: auto; width: 50%;">
+        <ion-input type="number" min="0" max="5" [(ngModel)]="ratings" placeholder="Rate driver ride" class="ratingInput"></ion-input>
+        <span class="matError" *ngIf="ratings > 5">Ratings should be between 1 to 5</span>
+      </div>
+  </ion-list>
+
+  <div style="text-align: center;">
+    <ion-button Fill="outline" color="primary" class="cancelBtn" (click)="cancelBookedRide()">Cancel Ride</ion-button>
+    <ion-button Fill="solid" color="primary" class="cancelBtn" [disabled]="ratings == 0 || ratings == null || ratings > 5" (click)="updateRatings()">Complete Ride</ion-button>
+  </div>
+  
+</ion-content>

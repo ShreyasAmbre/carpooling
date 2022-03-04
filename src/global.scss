@@ -38,6 +38,33 @@
 }
 
 
+.confirmridecss .modal-wrapper {
+    --height: 60%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute; 
+    top: 65%;
+    display: block;
+}
+
+.completeridecss .modal-wrapper {
+    --height: 60%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute; 
+    top: 60%;
+    display: block;
+}
+
+.notificationcss .modal-wrapper {
+    --height: 60%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute; 
+    top: 50%;
+    display: block;
+}
+
 .bookridecss .modal-wrapper {
     --height: 100%;
     // border-top-left-radius: 20px;

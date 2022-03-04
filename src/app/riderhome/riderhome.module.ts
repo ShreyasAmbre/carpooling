@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { RiderhomePageRoutingModule } from './riderhome-routing.module';
 
 import { RiderhomePage } from './riderhome.page';
-import {NotificationPageModule} from '../component/notification/notification.module'
 
 @NgModule({
   imports: [
@@ -15,7 +14,6 @@ import {NotificationPageModule} from '../component/notification/notification.mod
     FormsModule,
     IonicModule,
     RiderhomePageRoutingModule,
-    NotificationPageModule
   ],
   declarations: [RiderhomePage]
 })

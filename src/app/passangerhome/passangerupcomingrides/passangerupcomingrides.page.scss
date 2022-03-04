@@ -1,0 +1,87 @@
+.ionCardContainer{
+    margin: 0% !important; 
+    padding: 0% !important; 
+    box-shadow: 0 0 8px 3px #B8B8B8;
+}
+
+.imgParentContainer{
+    height: 70px; 
+    margin-top: 5%; 
+    padding-right: 0px; 
+    padding-right: 0px;
+}
+
+.imgContainer{
+    border-radius: 10px; 
+    font-size: 35px; 
+    color: white; 
+    float: right; 
+    padding-top: 4%;  
+    width: 70px; height: 
+    60px; background-color: #e6ffe6; 
+    vertical-align: middle; 
+    display: table-cell; 
+    text-align: center;
+}
+
+.contentContainer{
+    height: auto; 
+    padding-right: 0px; 
+    margin-right: 0px;
+}
+
+.contentRowContainer{
+    margin-top: 15%; 
+    margin-bottom: 0px; 
+    padding-bottom: 0px;
+}
+
+.source{
+    padding-bottom: 0px; 
+    margin-bottom: 0px; 
+    margin-top: -5px; 
+    font-size: 14px;
+}
+
+.destination{
+    padding-bottom: 0px; 
+    margin-bottom: 0px;  
+    font-size: 14px; 
+    letter-spacing: 0.5px;
+}
+
+.rideDetails{
+    font-size: 14px; 
+    margin-top: 3%; 
+    margin-bottom: 0px
+}
+
+.carDetails{
+    font-size: 14px; 
+    margin-top: 3%; 
+    padding-top: 0px; 
+    margin-top: 0px; 
+    margin-left: 7%; 
+    color: rgb(134, 129, 123); 
+    color: #00c22a;
+}
+
+.passangerBtn{
+    margin-top:-8%; 
+    margin-left: 3%; 
+    background-color: greenyellow; 
+    border-radius: 5px;
+}
+
+.no-data-img{
+    width: 80%; 
+    height: 80%; 
+    margin: 12% 10% 0px 9%;
+}
+
+.no-data-txt{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    text-align: center;
+    
+}

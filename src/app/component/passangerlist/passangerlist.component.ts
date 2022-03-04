@@ -16,6 +16,8 @@ export class PassangerlistComponent implements OnInit {
 
   chatPassanger:any;
   userData:any;
+
+  allPassangerOfRides = []
   
   constructor(private callNumber: CallNumber, private storage: Storage,public afDB:AngularFireDatabase, public modalController: ModalController,
     private http:HttpClient,) { }
@@ -38,7 +40,7 @@ export class PassangerlistComponent implements OnInit {
       this.userData = res
       // console.log("DRIVER DATA FROM SESSION STORAGE ===>", res)
       this.getAllUsers(this.userData)
-
+      this.getAllPassangerOfRides()
     })
   }
 
@@ -57,22 +59,6 @@ export class PassangerlistComponent implements OnInit {
     }
   }
 
-  
-  callNow(number){
-    this.callNumber.callNumber(number, true).then(res => {
-      console.log('Launched dialer!', res)
-    })
-    .catch(err =>{
-      console.log('Error launching dialer', err)
-    });
-  }
-
-  openChat(user){
-    // console.log("OPEN CHAT USER", user)
-    this.chatDetailModal(user)
-  }
-
-
   cancelRide(){
     let data = {
       driver_id : 1,
@@ -85,5 +71,34 @@ export class PassangerlistComponent implements OnInit {
     })
     this.modalController.dismiss()
   }
+
+  getAllPassangerOfRides(){
+    let data = {
+      ride_id : this.ride_id,
+      driver_id : 1,
+    }
+    
+    this.http.post("http://127.0.0.1:5000/passangerlistofrides", data).subscribe(res => {
+      this.allPassangerOfRides = JSON.parse('[' + res + ']')[0]
+      console.log("ALL PASSANGERS OF THIS RIDE", this.allPassangerOfRides)
+    })
+  }
+  
+  // callNow(number){
+  //   this.callNumber.callNumber(number, true).then(res => {
+  //     console.log('Launched dialer!', res)
+  //   })
+  //   .catch(err =>{
+  //     console.log('Error launching dialer', err)
+  //   });
+  // }
+
+  // openChat(user){
+  //   // console.log("OPEN CHAT USER", user)
+  //   this.chatDetailModal(user)
+  // }
+
+
+  
 
 }

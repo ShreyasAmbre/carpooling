@@ -27,6 +27,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import {HttpClientModule} from '@angular/common/http';
 
+import { CompleterideComponent } from './component/completeride/completeride.component';
+import { NotificationComponent } from './component/notification/notification.component'
 
 var firebaseConfig = {
   apiKey: "AIzaSyD7tvlFJ6s7sEgm1pSzbi4Z_LjYNPM1v_s",
@@ -41,7 +43,7 @@ var firebaseConfig = {
 
 
 @NgModule({
-  declarations: [AppComponent, ChatdetailComponent, PassangerlistComponent],
+  declarations: [AppComponent, ChatdetailComponent, PassangerlistComponent, CompleterideComponent, NotificationComponent],
   entryComponents: [],
   imports: [PassangernavsPageModule, IonicStorageModule.forRoot(), FormsModule, AngularFirestoreModule, AngularFireDatabaseModule, AngularFireAuthModule, AngularFireModule.initializeApp(firebaseConfig), 
             BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, HttpClientModule],

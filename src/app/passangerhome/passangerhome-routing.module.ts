@@ -29,10 +29,10 @@ const routes: Routes = [
         path: 'passangerprofile',
         loadChildren: () => import('../passangerprofile/passangerprofile.module').then( m => m.PassangerprofilePageModule)
       },
-      // {
-      //   path: 'passangerscheduleride',
-      //   loadChildren: () => import('./passangerscheduleride/passangerscheduleride.module').then( m => m.PassangerscheduleridePageModule)
-      // }
+      {
+        path: 'passangerscheduleride',
+        loadChildren: () => import('./passangerscheduleride/passangerscheduleride.module').then( m => m.PassangerscheduleridePageModule)
+      }
     ]
   },
   {

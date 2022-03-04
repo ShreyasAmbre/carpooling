@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Chart, LinearScale, CategoryScale, BarController, BarElement,
   DoughnutController, ArcElement , LegendOptions, Legend, LegendElement, LegendItem, registerables} from 'chart.js';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-passangermore',
@@ -14,70 +16,72 @@ export class PassangermorePage implements OnInit {
   myDonut:any;
   opt:any;
 
-  constructor() { }
+  upcomingRidesLength = 0
+  historyRidesLength = 0
+  completedRidesLength = 0
+
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
+    this.createChart()
+    this.getAllRides()
+  }
+
+  getAllRides(){
+    let data = {
+      passanger_id : 1
+    }
+    this.http.post("http://127.0.0.1:5000/getpassangerbookedrides", data).subscribe(res => {
+      let allRides = JSON.parse('[' + res + ']')[0]
+      let todaysDate = moment().format('YYYY MM DD')
+      let upcomingRides = []
+      let historyRides = []
+      let completedRides = []
+      for (let index = 0; index < allRides.length; index++) {
+        let dateOfRide = allRides[index]["date_of_ride"]
+        if((moment(dateOfRide).isSame(moment(), 'day') || moment(dateOfRide).isAfter(todaysDate)) && 
+            allRides[index]["ride_status"] !== "cancelled"){
+          upcomingRides.push(allRides[index])
+        }
+        if(moment(dateOfRide).isBefore(todaysDate) || allRides[index]["ride_status"] !== "pending"){
+          
+          allRides[index]["ride_status"] === "pending" ? completedRides.push(allRides[index]) : historyRides.push(allRides[index])
+          
+        }
+        this.upcomingRidesLength = upcomingRides.length
+        this.historyRidesLength = historyRides.length
+        this.completedRidesLength = completedRides.length
+      }
+      console.log("PASSANGER ALL RIDES RESPONSE ==>", allRides)
+      console.log("PASSANGER UPCOMING UPCOMING RIDES ==>", upcomingRides, this.upcomingRidesLength)
+      console.log("PASSANGER UPCOMING HISTORY RIDES ==>", historyRides, this.historyRidesLength)
+      console.log("PASSANGER UPCOMING COMPLETED RIDES ==>", completedRides, this.historyRidesLength)
+      this.createChart()
+    })
+  }
+
+
+  createChart(){
     var ctx = document.getElementById('myChart')as HTMLCanvasElement;
     var ctxDonut = document.getElementById('myDonut')as HTMLCanvasElement;
     Chart.register(LinearScale, CategoryScale, BarController, BarController,  BarElement,
                     DoughnutController, ArcElement);
-    this.myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-    });
-
-    this.opt = [{
-      ticks: {
-        beginAtZero: true
-      }
-    }]
 
     this.myDonut = new Chart(ctxDonut, {
       type: "doughnut",
       data: {
-        labels: ["Cancel Ride", "Success Ride", "Ratings", "Upcoming Rides", "Income"],
+        // labels: ["Upcoming Rides", "Completed Rides", "History Rides",],
+        labels: [this.upcomingRidesLength, this.completedRidesLength, this.historyRidesLength],
         datasets: [
           {
             label: "# of Votes",
-            data: [12, 19, 3, 5, 2],
+            data: [2,2,2],
             backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
+              "rgba(124, 252, 0, 0.2)",
+              "rgba(255, 99, 132, 0.2)",
             ],
-            hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#36eb6c", "#d363ff",]
+            hoverBackgroundColor: ["#36A2EB", "#00FF00", "#ff6384"]
           }
         ],
       },

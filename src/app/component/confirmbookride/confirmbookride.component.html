@@ -1,0 +1,34 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary" class="toolbar"  slots="start" >
+    <ion-title> 
+      Driver Detail
+    </ion-title>
+    <ion-buttons slot="end" style="margin-right: 4%; font-size: larger;" (click)="modalController.dismiss()">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="../../../assets/riderprofilepic.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{driverDetails.fullname}}</h2>
+          <h3>+91 {{driverDetails.contact}}</h3>
+          <p>{{driverDetails.email}}</p>
+          <ion-icon name="star-outline" style="color:#ffc107"></ion-icon>
+          <ion-icon name="star-outline" style="color:#ffc107"></ion-icon>
+          <ion-icon name="star-outline" style="color:#ffc107"></ion-icon>
+          <ion-icon name="star-outline" style="color:#ffc107"></ion-icon>
+        </ion-label>
+
+      </ion-item>
+  </ion-list>
+
+  <ion-button Fill="outline" color="primary" class="cancelBtn" (click)="confirmRide()">Confirm Ride</ion-button>
+  
+</ion-content>

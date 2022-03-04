@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {MainserviceService} from '../services/mainservice.service';
-
+import { ModalController } from '@ionic/angular'; 
+import { NotificationComponent } from '../component/notification/notification.component';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-riderhome',
@@ -10,8 +11,18 @@ import {MainserviceService} from '../services/mainservice.service';
 })
 export class RiderhomePage implements OnInit {
   tab:any;
-  constructor(private router: Router, private service: MainserviceService) { 
+  constructor(public modalController: ModalController, private http:HttpClient, private router: Router) { 
   }
+
+  async notificationModal() {
+    const modal = await this.modalController.create({
+      component: NotificationComponent,
+      cssClass: 'notificationcss',
+    });
+    return await modal.present();
+  }
+
+  
 
   ngOnInit() {
     

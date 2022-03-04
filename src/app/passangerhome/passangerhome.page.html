@@ -1,6 +1,11 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary" class="toolbar"  slots="start" >
-    <ion-title>UpComing Rides</ion-title>
+    <ion-title>Passanger</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/login">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,11 +15,11 @@
     <!-- TOP TABS -->
     <ion-tab-bar *ngIf="router.url == '/passangerhome/passangerhome/passangerupcomingrides' || router.url == '/passangerhome/passangerhome/passangerhistoryrides'" color="primary" slot="top">
       <ion-tab-button tab="passangerupcomingrides" >
-        <ion-label style="color: white; font-size: large;"><b>Upcoming Rides</b></ion-label>
+        <ion-label style="color: white; font-size: large;"><b>All Driver Rides</b></ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="passangerhistoryrides" >
-        <ion-label style="color: white; font-size: large;" ><b>Booked Rides</b></ion-label>
+        <ion-label style="color: white; font-size: large;" ><b>History Rides</b></ion-label>
       </ion-tab-button>
     </ion-tab-bar>
 
@@ -25,24 +30,24 @@
         <ion-label ><b>My Rides</b></ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="passangerchat" >
-        <ion-icon   name="chatbubbles"></ion-icon>
-        <ion-label ><b>Chat</b></ion-label>
-      </ion-tab-button>
-
-      <!-- <ion-tab-button tab="passangerscheduleride" >
+      <ion-tab-button tab="passangerscheduleride" >
         <ion-icon name="navigate"></ion-icon>
-        <ion-label><b>Book Ride</b></ion-label>
-      </ion-tab-button> -->
-
-      <ion-tab-button tab="passangermore" >
-        <ion-icon name="apps"></ion-icon>
-        <ion-label ><b>More</b></ion-label>
+        <ion-label><b>Booked Ride</b></ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="passangerprofile" >
         <ion-icon name="person"></ion-icon>
         <ion-label><b>Profile</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="passangerchat" >
+        <ion-icon   name="chatbubbles"></ion-icon>
+        <ion-label ><b>Chat</b></ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="passangermore" >
+        <ion-icon name="apps"></ion-icon>
+        <ion-label ><b>More</b></ion-label>
       </ion-tab-button>
       
     </ion-tab-bar>

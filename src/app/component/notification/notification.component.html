@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary" class="toolbar"  slots="start" >
     <ion-title> 
-      Passanger List
+      Notifications
     </ion-title>
     <ion-buttons slot="end" style="margin-right: 4%; font-size: larger;" (click)="modalController.dismiss()">
       <ion-icon name="close-circle-outline"></ion-icon>
@@ -18,26 +18,24 @@
           <img src="assets/riderprofilepic.png">
         </ion-avatar>
         <ion-label>
-          <h2>{{passanger.passanger_fullname}}</h2>
-          <h3>+91 {{passanger.passanger_contact}}</h3>
-          <p>{{passanger.passanger_contact}}</p>
+          <h2>Shrikant Ambre</h2>
+          <h3>+91 8149452478</h3>
+          <p>shrikant00@gmail.com</p>
+          <p>Pending</p>
         </ion-label>
       </ion-item>
     </ng-container>
       
   </ion-list>
 
-  <div class="row " *ngIf="allPassangerOfRides.length <= 0">
+  <!-- <div class="row " *ngIf="allPassangerOfRides.length <= 0">
     <div class="col-12 align-self-center">
       <img  src="assets/img/nopassanger.jpg" alt="no-data" class="no-data-img">
     </div>
     <div class="col-12 align-self-center">
-      <p class="no-data-txt">No Passangers</p>
+      <p class="no-data-txt">No Notification</p>
     </div>
     
-  </div>
-
-  <ion-button color="danger" class="cancelBtn" (click)="cancelRide()">Cancel Ride</ion-button>
-  
+  </div> -->
   
 </ion-content>

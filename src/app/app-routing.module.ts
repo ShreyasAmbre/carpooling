@@ -36,10 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./riderhome/riderhome.module').then( m => m.RiderhomePageModule)
   },
   {
-    path: 'notification',
-    loadChildren: () => import('./component/notification/notification.module').then( m => m.NotificationPageModule)
-  },
-  {
     path: 'signuprole',
     loadChildren: () => import('./signuprole/signuprole.module').then( m => m.SignuprolePageModule)
   },
