@@ -1,4 +1,7 @@
 <ion-content>
+  <ion-card class="ionCardContainer">
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="filterItems(searchTerm)" placeholder="Search Ride"></ion-searchbar>
+  </ion-card>
 
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>

@@ -6,7 +6,7 @@
 
 <ion-content>
   <div style="margin: 7%;">
-    <form #passangerSignupForm="ngForm" (ngSubmit)="passangerSignup(passangerSignupForm.value)">
+    <form #passangerSignupForm="ngForm" (ngSubmit)="firebaseSignUp(passangerSignupForm.value)">
       <ion-item class="inputitem">
         <ion-input type="text"  ngModel name="fullname" placeholder="Full Name*" ></ion-input>
       </ion-item>

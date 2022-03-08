@@ -68,7 +68,7 @@ export class LoginPage implements OnInit {
   }
 
   getUserDetails(user){
-    this.afDB.list('users/', ref => ref.orderByChild("id").equalTo(user._delegate.uid)).valueChanges().subscribe(res => {
+    this.afDB.list('users/', ref => ref.orderByChild("fid").equalTo(user._delegate.uid)).valueChanges().subscribe(res => {
       this.storage.set('user', res[0]);
 
       if(res[0]["role"] === "driver")

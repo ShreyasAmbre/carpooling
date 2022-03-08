@@ -69,7 +69,8 @@ export class RidersignupPage implements OnInit {
       this.carDetailsData["licensefile"] = this.licenseFile
       this.carDetailsData["carfile"] = this.carFile
       this.completeDriverData = Object.assign(this.carDetailsData, this.accDetailsData);
-      this.signup(this.completeDriverData)
+      // this.signup(this.completeDriverData)
+      this.firebaseSignUp(this.completeDriverData)
     }else{
       this.errorAlert("ERROR", "Signup Failed", "Crosscheck yours details")
     }
@@ -80,7 +81,8 @@ export class RidersignupPage implements OnInit {
     this.http.post("http://127.0.0.1:5000/driversignup",data).subscribe(res => {
       console.log("RIDER RESPONSE SIGUP ==>", res)
       if(res["msg"] == "Account Created"){
-        this.firebaseSignUp(data)
+        // this.firebaseSignUp(data)
+        this.firebaseAddUser(data)
       }else{
         this.successToast("Something went wrong")
       }
@@ -99,7 +101,10 @@ export class RidersignupPage implements OnInit {
         role: data.role
       };
 
-      this.firebaseAddUser(user)
+      this.completeDriverData["fid"] = res.user.uid
+      console.log("////////////////////////////////////", this.completeDriverData)
+      this.signup(this.completeDriverData)
+      // this.firebaseAddUser(user)
 
     }).catch(errors => {
       // console.log("SIGNUP ERROR ===>", errors)

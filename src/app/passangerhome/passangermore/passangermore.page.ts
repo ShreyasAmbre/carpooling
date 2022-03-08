@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, LinearScale, CategoryScale, BarController, BarElement,
   DoughnutController, ArcElement , LegendOptions, Legend, LegendElement, LegendItem, registerables} from 'chart.js';
 import * as moment from 'moment';
+import { MainserviceService } from 'src/app/services/mainservice.service';
 
 @Component({
   selector: 'app-passangermore',
@@ -20,7 +21,7 @@ export class PassangermorePage implements OnInit {
   historyRidesLength = 0
   completedRidesLength = 0
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private service: MainserviceService) { }
 
   ngOnInit() {
     this.createChart()
@@ -29,7 +30,7 @@ export class PassangermorePage implements OnInit {
 
   getAllRides(){
     let data = {
-      passanger_id : 1
+      passanger_id : this.service.userData["fid"]
     }
     this.http.post("http://127.0.0.1:5000/getpassangerbookedrides", data).subscribe(res => {
       let allRides = JSON.parse('[' + res + ']')[0]

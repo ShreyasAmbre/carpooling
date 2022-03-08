@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { MainserviceService } from '../services/mainservice.service';
 
 @Component({
   selector: 'app-riderprofile',
@@ -13,7 +14,7 @@ export class RiderprofilePage implements OnInit {
 
   profileData:any;
 
-  constructor(private http:HttpClient, public toastController: ToastController, public alertController: AlertController, public router:Router, ) { }
+  constructor(private http:HttpClient, public toastController: ToastController, public alertController: AlertController, public router:Router, private service: MainserviceService) { }
 
   async editprofile() {
     const alert = await this.alertController.create({
@@ -59,7 +60,7 @@ export class RiderprofilePage implements OnInit {
 
   getProfileData(){
     let data = {
-      id : 1
+      fid : this.service.userData["fid"]
     }
     this.http.post("http://127.0.0.1:5000/getdriverprofile", data).subscribe(res => {
       this.profileData = JSON.parse('[' + res + ']')[0][0]
@@ -69,7 +70,7 @@ export class RiderprofilePage implements OnInit {
 
   editProfile(data){
     console.log("EDITED PROFILE ==>", data)
-    data["id"] = 1
+    data["fid"] = this.service.userData["fid"]
     this.http.post("http://127.0.0.1:5000/driverupdateprofile", data).subscribe(res => {
       if(res["msg"] == "Driver details updated"){
         this.successToast(res["msg"])

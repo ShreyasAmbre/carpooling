@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { MainserviceService } from 'src/app/services/mainservice.service';
 
 @Component({
   selector: 'app-completeride',
@@ -12,7 +13,7 @@ export class CompleterideComponent implements OnInit {
   driverDetails = []
   ratings:any
 
-  constructor(public modalController: ModalController, private http:HttpClient,) { 
+  constructor(public modalController: ModalController, private http:HttpClient, private service: MainserviceService) { 
   }
   
   ngOnInit() {
@@ -21,7 +22,7 @@ export class CompleterideComponent implements OnInit {
 
   getRideDriverDetails(item){
     let data = {
-      id : item.driver_id,
+      fid : item.driver_id,
     }
 
     this.http.post("http://127.0.0.1:5000/getdriverprofile", data).subscribe(res => {
@@ -33,9 +34,9 @@ export class CompleterideComponent implements OnInit {
   updateRatings(){
     let total_ratings = this.driverDetails["ratings"] + this.ratings
     let data = {
-      driver_id : this.driverDetails["id"],
+      driver_id : this.driverDetails["fid"],
       ride_id: this.booked_ride_details["ride_id"],
-      passanger_id: this.booked_ride_details["passanger_id"],
+      passanger_id: this.service.userData["fid"],
       ratings: total_ratings,
       ride_status: "completed",
     }
@@ -49,9 +50,9 @@ export class CompleterideComponent implements OnInit {
 
   cancelBookedRide(){
     let data = {
-      driver_id : this.driverDetails["id"],
+      driver_id : this.driverDetails["fid"],
       ride_id: this.booked_ride_details["ride_id"],
-      passanger_id: this.booked_ride_details["passanger_id"],
+      passanger_id: this.service.userData["fid"],
       ride_status: "cancelled",
     }
 

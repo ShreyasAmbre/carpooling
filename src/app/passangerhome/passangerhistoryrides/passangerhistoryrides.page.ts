@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import * as moment from 'moment';
+import { MainserviceService } from 'src/app/services/mainservice.service';
 
 @Component({
   selector: 'app-passangerhistoryrides',
@@ -12,7 +13,7 @@ export class PassangerhistoryridesPage implements OnInit {
   historyRides = []
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private service: MainserviceService) { }
 
   ngOnInit() {
     this.getAllRides()
@@ -20,7 +21,7 @@ export class PassangerhistoryridesPage implements OnInit {
 
   getAllRides(){
     let data = {
-      passanger_id : 1
+      passanger_id : this.service.userData["fid"]
     }
     this.http.post("http://127.0.0.1:5000/getpassangerbookedrides", data).subscribe(res => {
       let allRides = JSON.parse('[' + res + ']')[0]

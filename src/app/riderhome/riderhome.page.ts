@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular'; 
 import { NotificationComponent } from '../component/notification/notification.component';
 import {HttpClient} from "@angular/common/http";
+import { Storage } from '@ionic/storage-angular';
+import { MainserviceService } from '../services/mainservice.service'
 
 @Component({
   selector: 'app-riderhome',
@@ -11,7 +13,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class RiderhomePage implements OnInit {
   tab:any;
-  constructor(public modalController: ModalController, private http:HttpClient, private router: Router) { 
+  constructor(public modalController: ModalController, private http:HttpClient, private router: Router, private storage: Storage, private service : MainserviceService) { 
   }
 
   async notificationModal() {
@@ -25,7 +27,10 @@ export class RiderhomePage implements OnInit {
   
 
   ngOnInit() {
-    
+    this.storage.create();
+    this.storage.get("user").then(res => {
+      this.service.userData = res
+    })
   }
 
 }

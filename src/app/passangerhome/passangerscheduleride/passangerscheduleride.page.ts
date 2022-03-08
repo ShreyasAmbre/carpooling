@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
+import { MainserviceService } from 'src/app/services/mainservice.service';
 import { CompleterideComponent } from '../../component/completeride/completeride.component'
 
 @Component({
@@ -12,7 +13,7 @@ import { CompleterideComponent } from '../../component/completeride/completeride
 export class PassangerscheduleridePage implements OnInit {
   confirmRides = []
 
-  constructor(private http:HttpClient, public modalController: ModalController,) { }
+  constructor(private http:HttpClient, public modalController: ModalController, private service: MainserviceService) { }
 
   async openCompleteRide(item) {
     const modal = await this.modalController.create({
@@ -31,7 +32,7 @@ export class PassangerscheduleridePage implements OnInit {
 
   getBookedRides(){
     let data = {
-      passanger_id : 1
+      passanger_id : this.service.userData["fid"]
     }
 
     this.http.post("http://127.0.0.1:5000/getpassangerbookedrides", data).subscribe(res => {

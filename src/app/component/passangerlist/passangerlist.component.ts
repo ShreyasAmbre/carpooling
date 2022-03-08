@@ -5,6 +5,7 @@ import { ChatdetailComponent } from '../chatdetail/chatdetail.component';
 import { Storage } from '@ionic/storage-angular';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import {HttpClient} from "@angular/common/http";
+import { MainserviceService } from 'src/app/services/mainservice.service';
 
 @Component({
   selector: 'app-passangerlist',
@@ -20,7 +21,7 @@ export class PassangerlistComponent implements OnInit {
   allPassangerOfRides = []
   
   constructor(private callNumber: CallNumber, private storage: Storage,public afDB:AngularFireDatabase, public modalController: ModalController,
-    private http:HttpClient,) { }
+    private http:HttpClient, private service: MainserviceService) { }
 
   async chatDetailModal(user) {
     const modal = await this.modalController.create({
@@ -60,8 +61,8 @@ export class PassangerlistComponent implements OnInit {
   }
 
   cancelRide(){
-    let data = {
-      driver_id : 1,
+      let data = {
+      fid : this.service.userData["fid"],
       ride_id : this.ride_id,
       ride_status: 'cancelled'
     }

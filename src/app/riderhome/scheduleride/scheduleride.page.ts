@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 import { ToastController } from '@ionic/angular';
+import { MainserviceService } from 'src/app/services/mainservice.service';
 
 @Component({
   selector: 'app-scheduleride',
@@ -22,7 +23,8 @@ export class ScheduleridePage implements OnInit {
 
   driverRideData:any;
 
-  constructor(public alertController: AlertController, public router:Router, private http:HttpClient, public toastController: ToastController) { }
+  constructor(public alertController: AlertController, public router:Router, private http:HttpClient, public toastController: ToastController,
+    private service : MainserviceService) { }
   
   async successToast(msg) {
     const toast = await this.toastController.create({
@@ -71,7 +73,7 @@ export class ScheduleridePage implements OnInit {
     this.driverRideData = scheduledata
     this.driverRideData["sources"] = this.source
     this.driverRideData["destination"] = this.destination
-    this.driverRideData["driver_id"] = 1
+    this.driverRideData["fid"] = this.service.userData["fid"]
     console.log("DRIVER BOOK RIDE ===>", this.driverRideData)
 
 

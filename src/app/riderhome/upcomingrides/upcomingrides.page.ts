@@ -4,6 +4,9 @@ import { PassangerlistComponent } from '../../component/passangerlist/passangerl
 import {HttpClient} from "@angular/common/http";
 import * as moment from 'moment';
 import { CompileTemplateMetadata } from '@angular/compiler';
+import { MainserviceService } from 'src/app/services/mainservice.service';
+import { Storage } from '@ionic/storage-angular';
+
 @Component({
   selector: 'app-upcomingrides',
   templateUrl: './upcomingrides.page.html',
@@ -13,7 +16,7 @@ export class UpcomingridesPage implements OnInit {
 
   upcomingRides = []
 
-  constructor(public modalController: ModalController, private http:HttpClient, public toastController: ToastController) { }
+  constructor(public modalController: ModalController, private http:HttpClient, public toastController: ToastController,  private service : MainserviceService,  private storage: Storage,) { }
 
   async passangerListModal(id) {
     const modal = await this.modalController.create({
@@ -36,12 +39,16 @@ export class UpcomingridesPage implements OnInit {
   
 
   ngOnInit() {
-    this.getAllRides()
+    this.storage.create();
+    this.storage.get("user").then(res => {
+      this.service.userData = res
+      this.getAllRides()
+    })
   }
 
   getAllRides(event?){
     let data = {
-      driver_id : 1
+      fid : this.service.userData["fid"]
     }
     this.http.post("http://127.0.0.1:5000/getdriverrides", data).subscribe(res => {
       let allRides = JSON.parse('[' + res + ']')[0]

@@ -48,7 +48,8 @@ export class PassangersignupPage implements OnInit {
     this.http.post("http://127.0.0.1:5000/passangersignup",data).subscribe(res => {
       console.log("PASSANGER RESPONSE SIGUP ==>", res)
       if(res["msg"] == "Account Created"){
-        this.firebaseSignUp(data)
+        // this.firebaseSignUp(data)
+        this.firebaseAddUser(data)
         }else{
         this.successToast("Something went wrong")
       }
@@ -65,7 +66,10 @@ export class PassangersignupPage implements OnInit {
         role: data.role
       };
 
-      this.firebaseAddUser(user)
+      data["fid"] = res.user.uid
+      this.passangerSignup(data)
+      console.log("//////////// PASSANGER FID", data)
+      // this.firebaseAddUser(user)
 
     }).catch(errors => {
       this.errorAlert("ERROR", "Signup Failed", errors.message)

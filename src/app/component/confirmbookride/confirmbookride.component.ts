@@ -37,8 +37,10 @@ export class ConfirmbookrideComponent implements OnInit {
   }
 
   getRideDriverDetails(item){
+    console.log("////// ==>", item)
+
     let data = {
-      id : item.driver_id,
+      fid : item.fid,
     }
 
     this.http.post("http://127.0.0.1:5000/getdriverprofile", data).subscribe(res => {
@@ -48,19 +50,18 @@ export class ConfirmbookrideComponent implements OnInit {
     })
   }
 
-
   confirmRide(){
 
     let data = {
-      driver_id : this.driverDetails["id"], 
-      passanger_id : 1, 
+      driver_id : this.driverDetails["fid"], 
+      passanger_id : this.passangerData["fid"], 
       ride_id : this.item["id"], 
       driver_fullname : this.driverDetails["fullname"], 
       driver_email : this.driverDetails["email"], 
       driver_contact : this.driverDetails["contact"], 
       passanger_fullname : this.passangerData["fullname"], 
       passanger_email : this.passangerData["email"], 
-      passanger_contact : this.passangerData["contactno"], 
+      passanger_contact : this.passangerData["contact"], 
       sources : this.item["sources"], 
       destination : this.item["destination"], 
       ride_fare : this.item["ride_fare"], 
