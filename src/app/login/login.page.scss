@@ -3,9 +3,17 @@
     border-bottom-right-radius:20px;
     background-color: linear-gradient(197deg, rgba(100,100,100,1) 0%, rgba(63,63,63,1) 13.5%, rgba(29,29,29,1) 33.33%, rgba(0,0,0,1) 100%) !important;
   }
-  .container{
+  .logincontainer{
+    // position: absolute;
+    // top:50%;
     position: absolute;
-    top:50%;
+    bottom: 15%;
+  }
+  .logocontainer{
+    position: absolute;
+    top: 9%;
+    width: 100%;
+    text-align: center;
   }
   .inputitem{
     border: 2px solid rgb(185, 248, 185);
