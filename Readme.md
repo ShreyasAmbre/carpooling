@@ -8,22 +8,25 @@ The motivate to build this app is to redeuce the traffic in the city, travel wit
 
 # Screenshots of Car Pulling App:- 
 
-# Technology :- Angular, HTML, CSS, BOotstrap, Javascript, Python, Flask & SLQLite
+# Technology :- 
+=> Angular, HTML, CSS, BOotstrap, Javascript, Python, Flask & SLQLite
 
-# Web Services :- Firebase for email authentication, Realtime database, Global Users Push Notification on app.
+# Web Services :- 
+=> Firebase for email authentication, Realtime database, Global Users Push Notification on app.
 
-# Installation Setup :- There will be two phase :- 1st Phase we will reqired installation on Frontend Part and in 2nd Phase Backend Part
+# Installation Setup :- 
+=> There will be two phase :- 1st Phase we will reqired installation on Frontend Part and in 2nd Phase Backend Part
 
 
-# Phase 1 :- Installation of Frontend Part
-
+# Phase 1 :- 
+=>Installation of Frontend Part
 => Install Nodejs, Angular, Ionic, 
 => Then, go to project root folder and fire this command npm install (to install all libraries)
 => After installing run the ionic server (ANGULAR SERVER) command => ionic serve
 
 
-# Phase 2:- Installatio of Backend Part
-
+# Phase 2:- 
+=> Installatio of Backend Part
 => Install Python 
 => Then install Virtual enviroment
 => Activate Virtual Enviroment 
